@@ -1,0 +1,1 @@
+terraform apply -invoke=action.gtm_publish_container_version.production
