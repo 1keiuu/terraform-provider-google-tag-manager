@@ -1,0 +1,3241 @@
+{
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/tagmanager.publish": {
+          "description": "Publish your Google Tag Manager container versions"
+        },
+        "https://www.googleapis.com/auth/tagmanager.manage.accounts": {
+          "description": "View and manage your Google Tag Manager accounts"
+        },
+        "https://www.googleapis.com/auth/tagmanager.readonly": {
+          "description": "View your Google Tag Manager container and its subcomponents"
+        },
+        "https://www.googleapis.com/auth/tagmanager.edit.containerversions": {
+          "description": "Manage your Google Tag Manager container versions"
+        },
+        "https://www.googleapis.com/auth/tagmanager.manage.users": {
+          "description": "Manage user permissions of your Google Tag Manager account and container"
+        },
+        "https://www.googleapis.com/auth/tagmanager.delete.containers": {
+          "description": "Delete your Google Tag Manager containers"
+        },
+        "https://www.googleapis.com/auth/tagmanager.edit.containers": {
+          "description": "Manage your Google Tag Manager container and its subcomponents, excluding versioning and publishing"
+        }
+      }
+    }
+  },
+  "baseUrl": "https://tagmanager.googleapis.com/",
+  "title": "Tag Manager API",
+  "rootUrl": "https://tagmanager.googleapis.com/",
+  "mtlsRootUrl": "https://tagmanager.mtls.googleapis.com/",
+  "basePath": "",
+  "parameters": {
+    "access_token": {
+      "description": "OAuth access token.",
+      "location": "query",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "location": "query",
+      "type": "string"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "alt": {
+      "default": "json",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "description": "Data format for response.",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "type": "boolean",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    }
+  },
+  "protocol": "rest",
+  "name": "tagmanager",
+  "id": "tagmanager:v1",
+  "resources": {
+    "accounts": {
+      "methods": {
+        "list": {
+          "description": "Lists all GTM Accounts that a user has access to.",
+          "id": "tagmanager.accounts.list",
+          "parameters": {},
+          "response": {
+            "$ref": "ListAccountsResponse"
+          },
+          "flatPath": "tagmanager/v1/accounts",
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.manage.accounts",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+          ],
+          "path": "tagmanager/v1/accounts",
+          "parameterOrder": []
+        },
+        "update": {
+          "parameters": {
+            "accountId": {
+              "description": "The GTM Account ID.",
+              "required": true,
+              "type": "string",
+              "location": "path"
+            },
+            "fingerprint": {
+              "location": "query",
+              "description": "When provided, this fingerprint must match the fingerprint of the account in storage.",
+              "type": "string"
+            }
+          },
+          "parameterOrder": [
+            "accountId"
+          ],
+          "response": {
+            "$ref": "Account"
+          },
+          "path": "tagmanager/v1/accounts/{accountId}",
+          "id": "tagmanager.accounts.update",
+          "description": "Updates a GTM Account.",
+          "flatPath": "tagmanager/v1/accounts/{accountId}",
+          "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.manage.accounts"
+          ],
+          "request": {
+            "$ref": "Account"
+          },
+          "httpMethod": "PUT"
+        },
+        "get": {
+          "description": "Gets a GTM Account.",
+          "response": {
+            "$ref": "Account"
+          },
+          "id": "tagmanager.accounts.get",
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.manage.accounts",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+          ],
+          "parameterOrder": [
+            "accountId"
+          ],
+          "path": "tagmanager/v1/accounts/{accountId}",
+          "parameters": {
+            "accountId": {
+              "required": true,
+              "description": "The GTM Account ID.",
+              "location": "path",
+              "type": "string"
+            }
+          },
+          "flatPath": "tagmanager/v1/accounts/{accountId}"
+        }
+      },
+      "resources": {
+        "permissions": {
+          "methods": {
+            "get": {
+              "parameters": {
+                "permissionId": {
+                  "type": "string",
+                  "location": "path",
+                  "required": true,
+                  "description": "The GTM User ID."
+                },
+                "accountId": {
+                  "type": "string",
+                  "location": "path",
+                  "description": "The GTM Account ID.",
+                  "required": true
+                }
+              },
+              "description": "Gets a user's Account & Container Permissions.",
+              "parameterOrder": [
+                "accountId",
+                "permissionId"
+              ],
+              "response": {
+                "$ref": "UserAccess"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.manage.users"
+              ],
+              "path": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
+              "id": "tagmanager.accounts.permissions.get",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
+              "httpMethod": "GET"
+            },
+            "create": {
+              "request": {
+                "$ref": "UserAccess"
+              },
+              "flatPath": "tagmanager/v1/accounts/{accountId}/permissions",
+              "parameters": {
+                "accountId": {
+                  "type": "string",
+                  "required": true,
+                  "description": "The GTM Account ID.",
+                  "location": "path"
+                }
+              },
+              "path": "tagmanager/v1/accounts/{accountId}/permissions",
+              "description": "Creates a user's Account & Container Permissions.",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.manage.users"
+              ],
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "accountId"
+              ],
+              "response": {
+                "$ref": "UserAccess"
+              },
+              "id": "tagmanager.accounts.permissions.create"
+            },
+            "update": {
+              "httpMethod": "PUT",
+              "path": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
+              "parameterOrder": [
+                "accountId",
+                "permissionId"
+              ],
+              "id": "tagmanager.accounts.permissions.update",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
+              "request": {
+                "$ref": "UserAccess"
+              },
+              "response": {
+                "$ref": "UserAccess"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.manage.users"
+              ],
+              "description": "Updates a user's Account & Container Permissions.",
+              "parameters": {
+                "accountId": {
+                  "description": "The GTM Account ID.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string"
+                },
+                "permissionId": {
+                  "description": "The GTM User ID.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                }
+              }
+            },
+            "list": {
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.manage.users"
+              ],
+              "parameterOrder": [
+                "accountId"
+              ],
+              "path": "tagmanager/v1/accounts/{accountId}/permissions",
+              "httpMethod": "GET",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/permissions",
+              "id": "tagmanager.accounts.permissions.list",
+              "description": "List all users that have access to the account along with Account and Container Permissions granted to each of them.",
+              "response": {
+                "$ref": "ListAccountUsersResponse"
+              },
+              "parameters": {
+                "accountId": {
+                  "type": "string",
+                  "location": "path",
+                  "required": true,
+                  "description": "The GTM Account ID."
+                }
+              }
+            },
+            "delete": {
+              "id": "tagmanager.accounts.permissions.delete",
+              "parameterOrder": [
+                "accountId",
+                "permissionId"
+              ],
+              "parameters": {
+                "permissionId": {
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "description": "The GTM User ID."
+                },
+                "accountId": {
+                  "type": "string",
+                  "required": true,
+                  "location": "path",
+                  "description": "The GTM Account ID."
+                }
+              },
+              "description": "Removes a user from the account, revoking access to it and all of its containers.",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.manage.users"
+              ],
+              "httpMethod": "DELETE",
+              "path": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}"
+            }
+          }
+        },
+        "containers": {
+          "methods": {
+            "create": {
+              "parameterOrder": [
+                "accountId"
+              ],
+              "flatPath": "tagmanager/v1/accounts/{accountId}/containers",
+              "parameters": {
+                "accountId": {
+                  "type": "string",
+                  "description": "The GTM Account ID.",
+                  "location": "path",
+                  "required": true
+                }
+              },
+              "description": "Creates a Container.",
+              "request": {
+                "$ref": "Container"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.edit.containers"
+              ],
+              "path": "tagmanager/v1/accounts/{accountId}/containers",
+              "httpMethod": "POST",
+              "id": "tagmanager.accounts.containers.create",
+              "response": {
+                "$ref": "Container"
+              }
+            },
+            "update": {
+              "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.edit.containers"
+              ],
+              "id": "tagmanager.accounts.containers.update",
+              "httpMethod": "PUT",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "response": {
+                "$ref": "Container"
+              },
+              "parameters": {
+                "fingerprint": {
+                  "description": "When provided, this fingerprint must match the fingerprint of the container in storage.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "accountId": {
+                  "description": "The GTM Account ID.",
+                  "type": "string",
+                  "required": true,
+                  "location": "path"
+                },
+                "containerId": {
+                  "location": "path",
+                  "type": "string",
+                  "required": true,
+                  "description": "The GTM Container ID."
+                }
+              },
+              "description": "Updates a Container.",
+              "parameterOrder": [
+                "accountId",
+                "containerId"
+              ],
+              "request": {
+                "$ref": "Container"
+              }
+            },
+            "delete": {
+              "httpMethod": "DELETE",
+              "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.delete.containers"
+              ],
+              "id": "tagmanager.accounts.containers.delete",
+              "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "parameterOrder": [
+                "accountId",
+                "containerId"
+              ],
+              "description": "Deletes a Container.",
+              "parameters": {
+                "accountId": {
+                  "description": "The GTM Account ID.",
+                  "type": "string",
+                  "location": "path",
+                  "required": true
+                },
+                "containerId": {
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "description": "The GTM Container ID."
+                }
+              }
+            },
+            "list": {
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                "https://www.googleapis.com/auth/tagmanager.readonly"
+              ],
+              "parameterOrder": [
+                "accountId"
+              ],
+              "response": {
+                "$ref": "ListContainersResponse"
+              },
+              "flatPath": "tagmanager/v1/accounts/{accountId}/containers",
+              "id": "tagmanager.accounts.containers.list",
+              "parameters": {
+                "accountId": {
+                  "description": "The GTM Account ID.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                }
+              },
+              "description": "Lists all Containers that belongs to a GTM Account.",
+              "path": "tagmanager/v1/accounts/{accountId}/containers"
+            },
+            "get": {
+              "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "httpMethod": "GET",
+              "id": "tagmanager.accounts.containers.get",
+              "description": "Gets a Container.",
+              "response": {
+                "$ref": "Container"
+              },
+              "parameterOrder": [
+                "accountId",
+                "containerId"
+              ],
+              "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                "https://www.googleapis.com/auth/tagmanager.readonly"
+              ],
+              "parameters": {
+                "accountId": {
+                  "location": "path",
+                  "type": "string",
+                  "required": true,
+                  "description": "The GTM Account ID."
+                },
+                "containerId": {
+                  "required": true,
+                  "type": "string",
+                  "description": "The GTM Container ID.",
+                  "location": "path"
+                }
+              }
+            }
+          },
+          "resources": {
+            "folders": {
+              "resources": {
+                "entities": {
+                  "methods": {
+                    "list": {
+                      "parameters": {
+                        "containerId": {
+                          "required": true,
+                          "type": "string",
+                          "location": "path",
+                          "description": "The GTM Container ID."
+                        },
+                        "accountId": {
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "description": "The GTM Account ID."
+                        },
+                        "folderId": {
+                          "required": true,
+                          "location": "path",
+                          "type": "string",
+                          "description": "The GTM Folder ID."
+                        }
+                      },
+                      "description": "List all entities in a GTM Folder.",
+                      "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities",
+                      "id": "tagmanager.accounts.containers.folders.entities.list",
+                      "response": {
+                        "$ref": "FolderEntities"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                        "https://www.googleapis.com/auth/tagmanager.readonly"
+                      ],
+                      "parameterOrder": [
+                        "accountId",
+                        "containerId",
+                        "folderId"
+                      ],
+                      "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities",
+                      "httpMethod": "GET"
+                    }
+                  }
+                }
+              },
+              "methods": {
+                "list": {
+                  "id": "tagmanager.accounts.containers.folders.list",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
+                  "parameters": {
+                    "accountId": {
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string",
+                      "location": "path"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "description": "The GTM Container ID.",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "description": "Lists all GTM Folders of a Container.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListFoldersResponse"
+                  }
+                },
+                "create": {
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
+                  "request": {
+                    "$ref": "Folder"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameters": {
+                    "accountId": {
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string",
+                      "required": true
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.folders.create",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
+                  "httpMethod": "POST",
+                  "description": "Creates a GTM Folder.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "response": {
+                    "$ref": "Folder"
+                  }
+                },
+                "update": {
+                  "id": "tagmanager.accounts.containers.folders.update",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
+                  "parameters": {
+                    "containerId": {
+                      "type": "string",
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID."
+                    },
+                    "folderId": {
+                      "description": "The GTM Folder ID.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "fingerprint": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "When provided, this fingerprint must match the fingerprint of the folder in storage."
+                    }
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "folderId"
+                  ],
+                  "description": "Updates a GTM Folder.",
+                  "httpMethod": "PUT",
+                  "request": {
+                    "$ref": "Folder"
+                  },
+                  "response": {
+                    "$ref": "Folder"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ]
+                },
+                "delete": {
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "folderId"
+                  ],
+                  "description": "Deletes a GTM Folder.",
+                  "httpMethod": "DELETE",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameters": {
+                    "folderId": {
+                      "description": "The GTM Folder ID.",
+                      "type": "string",
+                      "location": "path",
+                      "required": true
+                    },
+                    "containerId": {
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "type": "string",
+                      "required": true
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "location": "path"
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.folders.delete",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}"
+                },
+                "get": {
+                  "httpMethod": "GET",
+                  "id": "tagmanager.accounts.containers.folders.get",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "folderId"
+                  ],
+                  "response": {
+                    "$ref": "Folder"
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
+                  "description": "Gets a GTM Folder.",
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "description": "The GTM Container ID.",
+                      "type": "string",
+                      "location": "path"
+                    },
+                    "accountId": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Account ID."
+                    },
+                    "folderId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Folder ID."
+                    }
+                  }
+                }
+              }
+            },
+            "variables": {
+              "methods": {
+                "delete": {
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
+                  "description": "Deletes a GTM Variable.",
+                  "parameters": {
+                    "containerId": {
+                      "type": "string",
+                      "description": "The GTM Container ID.",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "accountId": {
+                      "location": "path",
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Account ID."
+                    },
+                    "variableId": {
+                      "location": "path",
+                      "description": "The GTM Variable ID.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.variables.delete",
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "variableId"
+                  ]
+                },
+                "create": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "request": {
+                    "$ref": "Variable"
+                  },
+                  "description": "Creates a GTM Variable.",
+                  "httpMethod": "POST",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
+                  "response": {
+                    "$ref": "Variable"
+                  },
+                  "parameters": {
+                    "accountId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "description": "The GTM Container ID."
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.variables.create"
+                },
+                "update": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "httpMethod": "PUT",
+                  "id": "tagmanager.accounts.containers.variables.update",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
+                  "description": "Updates a GTM Variable.",
+                  "response": {
+                    "$ref": "Variable"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "variableId"
+                  ],
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
+                  "parameters": {
+                    "variableId": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Variable ID."
+                    },
+                    "fingerprint": {
+                      "description": "When provided, this fingerprint must match the fingerprint of the variable in storage.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "required": true
+                    },
+                    "containerId": {
+                      "description": "The GTM Container ID.",
+                      "required": true,
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "request": {
+                    "$ref": "Variable"
+                  }
+                },
+                "list": {
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "response": {
+                    "$ref": "ListVariablesResponse"
+                  },
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.variables.list",
+                  "httpMethod": "GET",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "description": "Lists all GTM Variables of a Container."
+                },
+                "get": {
+                  "response": {
+                    "$ref": "Variable"
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
+                  "id": "tagmanager.accounts.containers.variables.get",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "variableId"
+                  ],
+                  "parameters": {
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "variableId": {
+                      "description": "The GTM Variable ID.",
+                      "required": true,
+                      "type": "string",
+                      "location": "path"
+                    },
+                    "containerId": {
+                      "description": "The GTM Container ID.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "httpMethod": "GET",
+                  "description": "Gets a GTM Variable.",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}"
+                }
+              }
+            },
+            "versions": {
+              "methods": {
+                "restore": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "httpMethod": "POST",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "description": "Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version).",
+                  "response": {
+                    "$ref": "ContainerVersion"
+                  },
+                  "parameters": {
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    },
+                    "containerVersionId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Container Version ID.",
+                      "required": true
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.versions.restore",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore"
+                },
+                "undelete": {
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    },
+                    "containerVersionId": {
+                      "type": "string",
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container Version ID."
+                    },
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete",
+                  "description": "Undeletes a Container Version.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions"
+                  ],
+                  "response": {
+                    "$ref": "ContainerVersion"
+                  },
+                  "id": "tagmanager.accounts.containers.versions.undelete",
+                  "httpMethod": "POST",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete"
+                },
+                "get": {
+                  "description": "Gets a Container Version.",
+                  "parameters": {
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "containerVersionId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container Version ID. Specify published to retrieve the currently published version.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "required": true
+                    }
+                  },
+                  "response": {
+                    "$ref": "ContainerVersion"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
+                  "httpMethod": "GET",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "id": "tagmanager.accounts.containers.versions.get"
+                },
+                "list": {
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "description": "Lists all Container Versions of a GTM Container.",
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Container ID.",
+                      "location": "path"
+                    },
+                    "includeDeleted": {
+                      "location": "query",
+                      "default": "false",
+                      "description": "Also retrieve deleted (archived) versions when true.",
+                      "type": "boolean"
+                    },
+                    "accountId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "headers": {
+                      "type": "boolean",
+                      "description": "Retrieve headers only when true.",
+                      "location": "query",
+                      "default": "false"
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.versions.list",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
+                  "response": {
+                    "$ref": "ListContainerVersionsResponse"
+                  }
+                },
+                "delete": {
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
+                  "description": "Deletes a Container Version.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "parameters": {
+                    "containerVersionId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container Version ID.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "location": "path"
+                    }
+                  },
+                  "httpMethod": "DELETE",
+                  "id": "tagmanager.accounts.containers.versions.delete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}"
+                },
+                "publish": {
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "containerVersionId": {
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "description": "The GTM Container Version ID."
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "location": "path"
+                    },
+                    "fingerprint": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "When provided, this fingerprint must match the fingerprint of the container version in storage."
+                    }
+                  },
+                  "response": {
+                    "$ref": "PublishContainerVersionResponse"
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish",
+                  "description": "Publishes a Container Version.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.publish"
+                  ],
+                  "id": "tagmanager.accounts.containers.versions.publish",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish",
+                  "httpMethod": "POST"
+                },
+                "create": {
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "id": "tagmanager.accounts.containers.versions.create",
+                  "response": {
+                    "$ref": "CreateContainerVersionResponse"
+                  },
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
+                  "description": "Creates a Container Version.",
+                  "request": {
+                    "$ref": "CreateContainerVersionRequestVersionOptions"
+                  }
+                },
+                "update": {
+                  "id": "tagmanager.accounts.containers.versions.update",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "containerVersionId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
+                  "request": {
+                    "$ref": "ContainerVersion"
+                  },
+                  "parameters": {
+                    "containerVersionId": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Container Version ID."
+                    },
+                    "containerId": {
+                      "required": true,
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Container ID."
+                    },
+                    "fingerprint": {
+                      "location": "query",
+                      "description": "When provided, this fingerprint must match the fingerprint of the container version in storage.",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "location": "path"
+                    }
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containerversions"
+                  ],
+                  "httpMethod": "PUT",
+                  "response": {
+                    "$ref": "ContainerVersion"
+                  },
+                  "description": "Updates a Container Version."
+                }
+              }
+            },
+            "tags": {
+              "methods": {
+                "create": {
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "request": {
+                    "$ref": "Tag"
+                  },
+                  "response": {
+                    "$ref": "Tag"
+                  },
+                  "id": "tagmanager.accounts.containers.tags.create",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "httpMethod": "POST",
+                  "description": "Creates a GTM Tag.",
+                  "parameters": {
+                    "accountId": {
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "containerId": {
+                      "required": true,
+                      "description": "The GTM Container ID.",
+                      "location": "path",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags"
+                },
+                "update": {
+                  "description": "Updates a GTM Tag.",
+                  "request": {
+                    "$ref": "Tag"
+                  },
+                  "id": "tagmanager.accounts.containers.tags.update",
+                  "httpMethod": "PUT",
+                  "response": {
+                    "$ref": "Tag"
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "tagId": {
+                      "type": "string",
+                      "description": "The GTM Tag ID.",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "fingerprint": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "When provided, this fingerprint must match the fingerprint of the tag in storage."
+                    }
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "tagId"
+                  ]
+                },
+                "list": {
+                  "description": "Lists all GTM Tags of a Container.",
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "required": true
+                    }
+                  },
+                  "response": {
+                    "$ref": "ListTagsResponse"
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "id": "tagmanager.accounts.containers.tags.list"
+                },
+                "delete": {
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "httpMethod": "DELETE",
+                  "id": "tagmanager.accounts.containers.tags.delete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "tagId"
+                  ],
+                  "parameters": {
+                    "tagId": {
+                      "description": "The GTM Tag ID.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "description": "The GTM Container ID.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "description": "Deletes a GTM Tag."
+                },
+                "get": {
+                  "description": "Gets a GTM Tag.",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "parameters": {
+                    "accountId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Container ID.",
+                      "location": "path"
+                    },
+                    "tagId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Tag ID.",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "tagId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
+                  "response": {
+                    "$ref": "Tag"
+                  },
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "id": "tagmanager.accounts.containers.tags.get"
+                }
+              }
+            },
+            "reauthorize_environments": {
+              "methods": {
+                "update": {
+                  "response": {
+                    "$ref": "Environment"
+                  },
+                  "httpMethod": "PUT",
+                  "id": "tagmanager.accounts.containers.reauthorize_environments.update",
+                  "request": {
+                    "$ref": "Environment"
+                  },
+                  "description": "Re-generates the authorization code for a GTM Environment.",
+                  "parameters": {
+                    "accountId": {
+                      "type": "string",
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "containerId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "type": "string"
+                    },
+                    "environmentId": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The GTM Environment ID.",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.publish"
+                  ],
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "environmentId"
+                  ]
+                }
+              }
+            },
+            "triggers": {
+              "methods": {
+                "list": {
+                  "httpMethod": "GET",
+                  "description": "Lists all GTM Triggers of a Container.",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
+                  "response": {
+                    "$ref": "ListTriggersResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "parameters": {
+                    "containerId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "required": true
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID."
+                    }
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "id": "tagmanager.accounts.containers.triggers.list"
+                },
+                "get": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "description": "Gets a GTM Trigger.",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Container ID.",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string",
+                      "location": "path"
+                    },
+                    "triggerId": {
+                      "description": "The GTM Trigger ID.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "triggerId"
+                  ],
+                  "id": "tagmanager.accounts.containers.triggers.get",
+                  "response": {
+                    "$ref": "Trigger"
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}"
+                },
+                "delete": {
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
+                  "id": "tagmanager.accounts.containers.triggers.delete",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "triggerId"
+                  ],
+                  "description": "Deletes a GTM Trigger.",
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "triggerId": {
+                      "location": "path",
+                      "description": "The GTM Trigger ID.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  }
+                },
+                "create": {
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
+                  "parameters": {
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container ID.",
+                      "type": "string"
+                    }
+                  },
+                  "request": {
+                    "$ref": "Trigger"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "description": "Creates a GTM Trigger.",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
+                  "id": "tagmanager.accounts.containers.triggers.create",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "response": {
+                    "$ref": "Trigger"
+                  }
+                },
+                "update": {
+                  "parameters": {
+                    "containerId": {
+                      "required": true,
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Container ID."
+                    },
+                    "fingerprint": {
+                      "location": "query",
+                      "description": "When provided, this fingerprint must match the fingerprint of the trigger in storage.",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "required": true
+                    },
+                    "triggerId": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "The GTM Trigger ID.",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "triggerId"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "response": {
+                    "$ref": "Trigger"
+                  },
+                  "id": "tagmanager.accounts.containers.triggers.update",
+                  "request": {
+                    "$ref": "Trigger"
+                  },
+                  "description": "Updates a GTM Trigger.",
+                  "httpMethod": "PUT",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}"
+                }
+              }
+            },
+            "environments": {
+              "methods": {
+                "list": {
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
+                  "parameters": {
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "description": "The GTM Account ID."
+                    },
+                    "containerId": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The GTM Container ID.",
+                      "type": "string"
+                    }
+                  },
+                  "id": "tagmanager.accounts.containers.environments.list",
+                  "description": "Lists all GTM Environments of a GTM Container.",
+                  "response": {
+                    "$ref": "ListEnvironmentsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ]
+                },
+                "delete": {
+                  "httpMethod": "DELETE",
+                  "id": "tagmanager.accounts.containers.environments.delete",
+                  "description": "Deletes a GTM Environment.",
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "environmentId"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
+                  "parameters": {
+                    "containerId": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "The GTM Container ID."
+                    },
+                    "accountId": {
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "environmentId": {
+                      "description": "The GTM Environment ID.",
+                      "type": "string",
+                      "location": "path",
+                      "required": true
+                    }
+                  }
+                },
+                "create": {
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "id": "tagmanager.accounts.containers.environments.create",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId"
+                  ],
+                  "description": "Creates a GTM Environment.",
+                  "parameters": {
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "type": "string",
+                      "required": true
+                    },
+                    "containerId": {
+                      "description": "The GTM Container ID.",
+                      "type": "string",
+                      "required": true,
+                      "location": "path"
+                    }
+                  },
+                  "response": {
+                    "$ref": "Environment"
+                  },
+                  "request": {
+                    "$ref": "Environment"
+                  }
+                },
+                "update": {
+                  "description": "Updates a GTM Environment.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "environmentId"
+                  ],
+                  "id": "tagmanager.accounts.containers.environments.update",
+                  "request": {
+                    "$ref": "Environment"
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
+                  "httpMethod": "PUT",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ],
+                  "parameters": {
+                    "environmentId": {
+                      "description": "The GTM Environment ID.",
+                      "type": "string",
+                      "location": "path",
+                      "required": true
+                    },
+                    "fingerprint": {
+                      "description": "When provided, this fingerprint must match the fingerprint of the environment in storage.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "description": "The GTM Account ID.",
+                      "type": "string",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "description": "The GTM Container ID.",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "response": {
+                    "$ref": "Environment"
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}"
+                },
+                "get": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers",
+                    "https://www.googleapis.com/auth/tagmanager.readonly"
+                  ],
+                  "response": {
+                    "$ref": "Environment"
+                  },
+                  "description": "Gets a GTM Environment.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "environmentId"
+                  ],
+                  "id": "tagmanager.accounts.containers.environments.get",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "containerId": {
+                      "description": "The GTM Container ID.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "required": true,
+                      "description": "The GTM Account ID.",
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "environmentId": {
+                      "location": "path",
+                      "description": "The GTM Environment ID.",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}"
+                }
+              }
+            },
+            "move_folders": {
+              "methods": {
+                "update": {
+                  "description": "Moves entities to a GTM Folder.",
+                  "parameterOrder": [
+                    "accountId",
+                    "containerId",
+                    "folderId"
+                  ],
+                  "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}",
+                  "parameters": {
+                    "triggerId": {
+                      "location": "query",
+                      "description": "The triggers to be moved to the folder.",
+                      "type": "string",
+                      "repeated": true
+                    },
+                    "folderId": {
+                      "description": "The GTM Folder ID.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "variableId": {
+                      "description": "The variables to be moved to the folder.",
+                      "repeated": true,
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "accountId": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The GTM Account ID.",
+                      "type": "string"
+                    },
+                    "containerId": {
+                      "type": "string",
+                      "description": "The GTM Container ID.",
+                      "location": "path",
+                      "required": true
+                    },
+                    "tagId": {
+                      "repeated": true,
+                      "description": "The tags to be moved to the folder.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "flatPath": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}",
+                  "request": {
+                    "$ref": "Folder"
+                  },
+                  "id": "tagmanager.accounts.containers.move_folders.update",
+                  "httpMethod": "PUT",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/tagmanager.edit.containers"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servicePath": "",
+  "version": "v1",
+  "description": "This API allows clients to access and modify container and tag configuration.",
+  "documentationLink": "https://developers.google.com/tag-manager",
+  "discoveryVersion": "v1",
+  "batchPath": "batch",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "revision": "20260902",
+  "kind": "discovery#restDescription",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "schemas": {
+    "ListVariablesResponse": {
+      "type": "object",
+      "description": "List Variables Response.",
+      "id": "ListVariablesResponse",
+      "properties": {
+        "variables": {
+          "type": "array",
+          "description": "All GTM Variables of a GTM Container.",
+          "items": {
+            "$ref": "Variable"
+          }
+        }
+      }
+    },
+    "Variable": {
+      "description": "Represents a Google Tag Manager Variable.",
+      "id": "Variable",
+      "type": "object",
+      "properties": {
+        "parameter": {
+          "type": "array",
+          "description": "The variable's parameters.",
+          "items": {
+            "$ref": "Parameter"
+          }
+        },
+        "variableId": {
+          "type": "string",
+          "description": "The Variable ID uniquely identifies the GTM Variable."
+        },
+        "type": {
+          "description": "GTM Variable Type.",
+          "type": "string"
+        },
+        "notes": {
+          "description": "User notes on how to apply this variable in the container.",
+          "type": "string"
+        },
+        "scheduleEndMs": {
+          "description": "The end timestamp in milliseconds to schedule a variable.",
+          "format": "int64",
+          "type": "string"
+        },
+        "disablingTriggerId": {
+          "description": "For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Variable display name.",
+          "type": "string"
+        },
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "enablingTriggerId": {
+          "type": "array",
+          "description": "For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scheduleStartMs": {
+          "format": "int64",
+          "description": "The start timestamp in milliseconds to schedule a variable.",
+          "type": "string"
+        },
+        "parentFolderId": {
+          "type": "string",
+          "description": "Parent folder id."
+        },
+        "accountId": {
+          "description": "GTM Account ID.",
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified."
+        }
+      }
+    },
+    "Parameter": {
+      "description": "Represents a Google Tag Manager Parameter.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."
+        },
+        "map": {
+          "type": "array",
+          "items": {
+            "$ref": "Parameter"
+          },
+          "description": "This map parameter's parameters (must have keys; keys must be unique)."
+        },
+        "list": {
+          "items": {
+            "$ref": "Parameter"
+          },
+          "description": "This list parameter's parameters (keys will be ignored).",
+          "type": "array"
+        },
+        "value": {
+          "type": "string",
+          "description": "A parameter's value (may contain variable references). as appropriate to the specified type."
+        },
+        "type": {
+          "enum": [
+            "template",
+            "integer",
+            "boolean",
+            "list",
+            "map",
+            "triggerReference",
+            "tagReference"
+          ],
+          "enumDescriptions": [
+            "May include variable references.",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "type": "string",
+          "description": "The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name "
+        }
+      },
+      "id": "Parameter",
+      "type": "object"
+    },
+    "ContainerVersion": {
+      "type": "object",
+      "id": "ContainerVersion",
+      "description": "Represents a Google Tag Manager Container Version.",
+      "properties": {
+        "fingerprint": {
+          "description": "The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified.",
+          "type": "string"
+        },
+        "trigger": {
+          "type": "array",
+          "description": "The triggers in the container that this version was taken from.",
+          "items": {
+            "$ref": "Trigger"
+          }
+        },
+        "deleted": {
+          "description": "A value of true indicates this container version has been deleted.",
+          "type": "boolean"
+        },
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "folder": {
+          "description": "The folders in the container that this version was taken from.",
+          "items": {
+            "$ref": "Folder"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "type": "string",
+          "description": "User notes on how to apply this container version in the container."
+        },
+        "container": {
+          "description": "The container that this version was taken from.",
+          "$ref": "Container"
+        },
+        "tag": {
+          "items": {
+            "$ref": "Tag"
+          },
+          "type": "array",
+          "description": "The tags in the container that this version was taken from."
+        },
+        "name": {
+          "description": "Container version display name.",
+          "type": "string"
+        },
+        "containerVersionId": {
+          "description": "The Container Version ID uniquely identifies the GTM Container Version.",
+          "type": "string"
+        },
+        "variable": {
+          "type": "array",
+          "description": "The variables in the container that this version was taken from.",
+          "items": {
+            "$ref": "Variable"
+          }
+        },
+        "accountId": {
+          "type": "string",
+          "description": "GTM Account ID."
+        }
+      }
+    },
+    "ListAccountUsersResponse": {
+      "type": "object",
+      "description": "List AccountUsers Response.",
+      "id": "ListAccountUsersResponse",
+      "properties": {
+        "userAccess": {
+          "description": "All GTM AccountUsers of a GTM Account.",
+          "type": "array",
+          "items": {
+            "$ref": "UserAccess"
+          }
+        }
+      }
+    },
+    "AccountAccess": {
+      "description": "Defines the Google Tag Manager Account access permissions.",
+      "id": "AccountAccess",
+      "type": "object",
+      "properties": {
+        "permission": {
+          "items": {
+            "enum": [
+              "read",
+              "edit",
+              "publish",
+              "delete",
+              "manage",
+              "editWorkspace"
+            ],
+            "type": "string",
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          },
+          "type": "array",
+          "description": "List of Account permissions. Valid account permissions are read and manage."
+        }
+      }
+    },
+    "PublishContainerVersionResponse": {
+      "description": "Publish container version response.",
+      "id": "PublishContainerVersionResponse",
+      "properties": {
+        "containerVersion": {
+          "description": "The container version created.",
+          "$ref": "ContainerVersion"
+        },
+        "compilerError": {
+          "description": "Compiler errors or not.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "Trigger": {
+      "properties": {
+        "continuousTimeMinMilliseconds": {
+          "description": "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger.",
+          "$ref": "Parameter"
+        },
+        "visibilitySelector": {
+          "$ref": "Parameter",
+          "description": "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger."
+        },
+        "parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "Parameter"
+          },
+          "description": "Additional parameters."
+        },
+        "horizontalScrollPercentageList": {
+          "$ref": "Parameter",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers."
+        },
+        "waitForTags": {
+          "description": "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers.",
+          "$ref": "Parameter"
+        },
+        "interval": {
+          "$ref": "Parameter",
+          "description": "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers."
+        },
+        "waitForTagsTimeout": {
+          "$ref": "Parameter",
+          "description": "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers."
+        },
+        "accountId": {
+          "description": "GTM Account ID.",
+          "type": "string"
+        },
+        "visiblePercentageMax": {
+          "$ref": "Parameter",
+          "description": "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger."
+        },
+        "checkValidation": {
+          "description": "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.",
+          "$ref": "Parameter"
+        },
+        "type": {
+          "enum": [
+            "pageview",
+            "domReady",
+            "windowLoaded",
+            "customEvent",
+            "triggerGroup",
+            "always",
+            "formSubmission",
+            "click",
+            "linkClick",
+            "jsError",
+            "historyChange",
+            "timer",
+            "ampClick",
+            "ampTimer",
+            "ampScroll",
+            "ampVisibility",
+            "youTubeVideo",
+            "scrollDepth",
+            "elementVisibility"
+          ],
+          "type": "string",
+          "description": "Defines the data layer event that causes this trigger.",
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "limit": {
+          "description": "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers.",
+          "$ref": "Parameter"
+        },
+        "name": {
+          "description": "Trigger display name.",
+          "type": "string"
+        },
+        "filter": {
+          "description": "The trigger will only fire iff all Conditions are true.",
+          "type": "array",
+          "items": {
+            "$ref": "Condition"
+          }
+        },
+        "totalTimeMinMilliseconds": {
+          "description": "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.",
+          "$ref": "Parameter"
+        },
+        "visiblePercentageMin": {
+          "description": "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.",
+          "$ref": "Parameter"
+        },
+        "maxTimerLengthSeconds": {
+          "description": "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.",
+          "$ref": "Parameter"
+        },
+        "intervalSeconds": {
+          "$ref": "Parameter",
+          "description": "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger."
+        },
+        "eventName": {
+          "$ref": "Parameter",
+          "description": "Name of the GTM event that is fired. Only valid for Timer triggers."
+        },
+        "containerId": {
+          "type": "string",
+          "description": "GTM Container ID."
+        },
+        "autoEventFilter": {
+          "type": "array",
+          "description": "Used in the case of auto event tracking.",
+          "items": {
+            "$ref": "Condition"
+          }
+        },
+        "verticalScrollPercentageList": {
+          "$ref": "Parameter",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers."
+        },
+        "triggerId": {
+          "type": "string",
+          "description": "The Trigger ID uniquely identifies the GTM Trigger."
+        },
+        "parentFolderId": {
+          "description": "Parent folder id.",
+          "type": "string"
+        },
+        "customEventFilter": {
+          "items": {
+            "$ref": "Condition"
+          },
+          "description": "Used in the case of custom event, which is fired iff all Conditions are true.",
+          "type": "array"
+        },
+        "selector": {
+          "description": "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger.",
+          "$ref": "Parameter"
+        },
+        "uniqueTriggerId": {
+          "description": "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers.",
+          "$ref": "Parameter"
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified."
+        }
+      },
+      "description": "Represents a Google Tag Manager Trigger",
+      "type": "object",
+      "id": "Trigger"
+    },
+    "ContainerVersionHeader": {
+      "id": "ContainerVersionHeader",
+      "properties": {
+        "numVariables": {
+          "description": "Number of variables in the container version.",
+          "type": "string"
+        },
+        "deleted": {
+          "description": "A value of true indicates this container version has been deleted.",
+          "type": "boolean"
+        },
+        "containerId": {
+          "type": "string",
+          "description": "GTM Container ID."
+        },
+        "numTriggers": {
+          "type": "string",
+          "description": "Number of triggers in the container version."
+        },
+        "accountId": {
+          "type": "string",
+          "description": "GTM Account ID."
+        },
+        "name": {
+          "description": "Container version display name.",
+          "type": "string"
+        },
+        "numTags": {
+          "type": "string",
+          "description": "Number of tags in the container version."
+        },
+        "containerVersionId": {
+          "description": "The Container Version ID uniquely identifies the GTM Container Version.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "description": "Represents a Google Tag Manager Container Version Header."
+    },
+    "UserAccess": {
+      "id": "UserAccess",
+      "properties": {
+        "accountId": {
+          "description": "GTM Account ID.",
+          "type": "string"
+        },
+        "containerAccess": {
+          "type": "array",
+          "items": {
+            "$ref": "ContainerAccess"
+          },
+          "description": "GTM Container access permissions."
+        },
+        "permissionId": {
+          "type": "string",
+          "description": "Account Permission ID."
+        },
+        "emailAddress": {
+          "description": "User's email address.",
+          "type": "string"
+        },
+        "accountAccess": {
+          "description": "GTM Account access permissions.",
+          "$ref": "AccountAccess"
+        }
+      },
+      "type": "object",
+      "description": "Represents a user's permissions to an account and its container."
+    },
+    "ListTriggersResponse": {
+      "description": "List triggers response.",
+      "type": "object",
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "$ref": "Trigger"
+          },
+          "description": "All GTM Triggers of a GTM Container."
+        }
+      },
+      "id": "ListTriggersResponse"
+    },
+    "ListEnvironmentsResponse": {
+      "type": "object",
+      "properties": {
+        "environments": {
+          "type": "array",
+          "items": {
+            "$ref": "Environment"
+          },
+          "description": "All Environments of a GTM Container."
+        }
+      },
+      "description": "List Environments Response.",
+      "id": "ListEnvironmentsResponse"
+    },
+    "ListContainersResponse": {
+      "properties": {
+        "containers": {
+          "type": "array",
+          "description": "All Containers of a GTM Account.",
+          "items": {
+            "$ref": "Container"
+          }
+        }
+      },
+      "type": "object",
+      "id": "ListContainersResponse",
+      "description": "List Containers Response."
+    },
+    "ListContainerVersionsResponse": {
+      "properties": {
+        "containerVersionHeader": {
+          "description": "All container version headers of a GTM Container.",
+          "items": {
+            "$ref": "ContainerVersionHeader"
+          },
+          "type": "array"
+        },
+        "containerVersion": {
+          "items": {
+            "$ref": "ContainerVersion"
+          },
+          "type": "array",
+          "description": "All versions of a GTM Container."
+        }
+      },
+      "type": "object",
+      "description": "List container versions response.",
+      "id": "ListContainerVersionsResponse"
+    },
+    "TeardownTag": {
+      "properties": {
+        "stopTeardownOnFailure": {
+          "type": "boolean",
+          "description": "If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status."
+        },
+        "tagName": {
+          "description": "The name of the teardown tag.",
+          "type": "string"
+        }
+      },
+      "id": "TeardownTag",
+      "type": "object"
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "The Account ID uniquely identifies the GTM Account."
+        },
+        "name": {
+          "description": "Account display name.",
+          "type": "string"
+        },
+        "shareData": {
+          "type": "boolean",
+          "description": "Whether the account shares data anonymously with Google and others."
+        },
+        "fingerprint": {
+          "description": "The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified.",
+          "type": "string"
+        }
+      },
+      "description": "Represents a Google Tag Manager Account.",
+      "id": "Account"
+    },
+    "Container": {
+      "properties": {
+        "accountId": {
+          "description": "GTM Account ID.",
+          "type": "string"
+        },
+        "timeZoneCountryId": {
+          "type": "string",
+          "description": "Container Country ID."
+        },
+        "enabledBuiltInVariable": {
+          "items": {
+            "enum": [
+              "pageUrl",
+              "pageHostname",
+              "pagePath",
+              "referrer",
+              "event",
+              "clickElement",
+              "clickClasses",
+              "clickId",
+              "clickTarget",
+              "clickUrl",
+              "clickText",
+              "firstPartyServingUrl",
+              "formElement",
+              "formClasses",
+              "formId",
+              "formTarget",
+              "formUrl",
+              "formText",
+              "environmentName",
+              "errorMessage",
+              "errorUrl",
+              "errorLine",
+              "newHistoryUrl",
+              "oldHistoryUrl",
+              "newHistoryFragment",
+              "oldHistoryFragment",
+              "newHistoryState",
+              "oldHistoryState",
+              "historySource",
+              "containerVersion",
+              "debugMode",
+              "randomNumber",
+              "containerId",
+              "appId",
+              "appName",
+              "appVersionCode",
+              "appVersionName",
+              "language",
+              "osVersion",
+              "platform",
+              "sdkVersion",
+              "deviceName",
+              "resolution",
+              "advertiserId",
+              "advertisingTrackingEnabled",
+              "htmlId",
+              "ampBrowserLanguage",
+              "ampCanonicalPath",
+              "ampCanonicalUrl",
+              "ampCanonicalHost",
+              "ampReferrer",
+              "ampTitle",
+              "ampClientId",
+              "ampClientTimezone",
+              "ampClientTimestamp",
+              "ampClientScreenWidth",
+              "ampClientScreenHeight",
+              "ampClientScrollX",
+              "ampClientScrollY",
+              "ampClientMaxScrollX",
+              "ampClientMaxScrollY",
+              "ampTotalEngagedTime",
+              "ampPageViewId",
+              "ampPageLoadTime",
+              "ampPageDownloadTime",
+              "ampGtmEvent",
+              "eventName",
+              "firebaseEventParameterCampaign",
+              "firebaseEventParameterCampaignAclid",
+              "firebaseEventParameterCampaignAnid",
+              "firebaseEventParameterCampaignClickTimestamp",
+              "firebaseEventParameterCampaignContent",
+              "firebaseEventParameterCampaignCp1",
+              "firebaseEventParameterCampaignGclid",
+              "firebaseEventParameterCampaignSource",
+              "firebaseEventParameterCampaignTerm",
+              "firebaseEventParameterCurrency",
+              "firebaseEventParameterDynamicLinkAcceptTime",
+              "firebaseEventParameterDynamicLinkLinkid",
+              "firebaseEventParameterNotificationMessageDeviceTime",
+              "firebaseEventParameterNotificationMessageId",
+              "firebaseEventParameterNotificationMessageName",
+              "firebaseEventParameterNotificationMessageTime",
+              "firebaseEventParameterNotificationTopic",
+              "firebaseEventParameterPreviousAppVersion",
+              "firebaseEventParameterPreviousOsVersion",
+              "firebaseEventParameterPrice",
+              "firebaseEventParameterProductId",
+              "firebaseEventParameterQuantity",
+              "firebaseEventParameterValue",
+              "videoProvider",
+              "videoUrl",
+              "videoTitle",
+              "videoDuration",
+              "videoPercent",
+              "videoVisible",
+              "videoStatus",
+              "videoCurrentTime",
+              "scrollDepthThreshold",
+              "scrollDepthUnits",
+              "scrollDepthDirection",
+              "elementVisibilityRatio",
+              "elementVisibilityTime",
+              "elementVisibilityFirstTime",
+              "elementVisibilityRecentTime",
+              "analyticsClientId",
+              "analyticsSessionId",
+              "analyticsSessionNumber"
+            ],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "For web or mobile.",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "For web or mobile.",
+              "",
+              "For web or mobile.",
+              "For web or mobile.",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "type": "string"
+          },
+          "description": "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId.",
+          "type": "array"
+        },
+        "usageContext": {
+          "description": "List of Usage Contexts for the Container. Valid values include: web, android, ios.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "enum": [
+              "web",
+              "android",
+              "ios",
+              "androidSdk5",
+              "iosSdk5",
+              "amp"
+            ]
+          }
+        },
+        "notes": {
+          "description": "Container Notes.",
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "Container display name."
+        },
+        "timeZoneId": {
+          "type": "string",
+          "description": "Container Time Zone ID."
+        },
+        "containerId": {
+          "description": "The Container ID uniquely identifies the GTM Container.",
+          "type": "string"
+        },
+        "domainName": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "Optional list of domain names associated with the Container."
+        },
+        "publicId": {
+          "type": "string",
+          "description": "Container Public ID."
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."
+        }
+      },
+      "description": "Represents a Google Tag Manager Container.",
+      "type": "object",
+      "id": "Container"
+    },
+    "ListTagsResponse": {
+      "type": "object",
+      "id": "ListTagsResponse",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "Tag"
+          },
+          "description": "All GTM Tags of a GTM Container."
+        }
+      },
+      "description": "List Tags Response."
+    },
+    "CreateContainerVersionRequestVersionOptions": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the container version to be created."
+        },
+        "quickPreview": {
+          "description": "The creation of this version may be for quick preview and shouldn't be saved.",
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string",
+          "description": "The notes of the container version to be created."
+        }
+      },
+      "type": "object",
+      "id": "CreateContainerVersionRequestVersionOptions",
+      "description": "Options for new container versions."
+    },
+    "ListFoldersResponse": {
+      "properties": {
+        "folders": {
+          "items": {
+            "$ref": "Folder"
+          },
+          "description": "All GTM Folders of a GTM Container.",
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "description": "List Folders Response.",
+      "id": "ListFoldersResponse"
+    },
+    "ContainerAccess": {
+      "id": "ContainerAccess",
+      "type": "object",
+      "description": "Defines the Google Tag Manager Container access permissions.",
+      "properties": {
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "permission": {
+          "type": "array",
+          "description": "List of Container permissions. Valid container permissions are: read, edit, delete, publish.",
+          "items": {
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "enum": [
+              "read",
+              "edit",
+              "publish",
+              "delete",
+              "manage",
+              "editWorkspace"
+            ],
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CreateContainerVersionResponse": {
+      "description": "Create container versions response.",
+      "type": "object",
+      "properties": {
+        "compilerError": {
+          "description": "Compiler errors or not.",
+          "type": "boolean"
+        },
+        "containerVersion": {
+          "$ref": "ContainerVersion",
+          "description": "The container version created."
+        }
+      },
+      "id": "CreateContainerVersionResponse"
+    },
+    "SetupTag": {
+      "id": "SetupTag",
+      "type": "object",
+      "properties": {
+        "stopOnSetupFailure": {
+          "description": "If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status.",
+          "type": "boolean"
+        },
+        "tagName": {
+          "description": "The name of the setup tag.",
+          "type": "string"
+        }
+      }
+    },
+    "ListAccountsResponse": {
+      "description": "List Accounts Response.",
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "Account"
+          },
+          "type": "array",
+          "description": "List of GTM Accounts that a user has access to."
+        }
+      },
+      "id": "ListAccountsResponse",
+      "type": "object"
+    },
+    "Environment": {
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Default preview page url for the environment."
+        },
+        "fingerprint": {
+          "description": "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The environment description. Can be set or changed only on USER type environments.",
+          "type": "string"
+        },
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The environment display name. Can be set or changed only on USER type environments.",
+          "type": "string"
+        },
+        "enableDebug": {
+          "description": "Whether or not to enable debug by default on for the environment.",
+          "type": "boolean"
+        },
+        "environmentId": {
+          "description": "GTM Environment ID uniquely identifies the GTM Environment.",
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "GTM Account ID."
+        },
+        "authorizationCode": {
+          "description": "The environment authorization code.",
+          "type": "string"
+        },
+        "containerVersionId": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "user",
+            "live",
+            "latest",
+            "draft"
+          ],
+          "description": "The type of this environment.",
+          "enumDescriptions": [
+            "Used for user defined environments.",
+            "Used for Live environment, which points to the live published container version.",
+            "Used for Latest environment, which points to the latest created container version.",
+            "Used for Draft environment, which points to the single draft in the container."
+          ],
+          "type": "string"
+        },
+        "authorizationTimestampMs": {
+          "format": "int64",
+          "type": "string",
+          "description": "The last update time-stamp for the authorization code."
+        }
+      },
+      "id": "Environment",
+      "description": "Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type USER, but can only update the enable_debug and url fields of environments of other types.",
+      "type": "object"
+    },
+    "Condition": {
+      "description": "Represents a predicate.",
+      "id": "Condition",
+      "type": "object",
+      "properties": {
+        "parameter": {
+          "items": {
+            "$ref": "Parameter"
+          },
+          "description": "A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. ",
+          "type": "array"
+        },
+        "type": {
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "description": "The type of operator for this condition.",
+          "enum": [
+            "equals",
+            "contains",
+            "startsWith",
+            "endsWith",
+            "matchRegex",
+            "greater",
+            "greaterOrEquals",
+            "less",
+            "lessOrEquals",
+            "cssSelector",
+            "urlMatches"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "FolderEntities": {
+      "properties": {
+        "variable": {
+          "items": {
+            "$ref": "Variable"
+          },
+          "type": "array",
+          "description": "The list of variables inside the folder."
+        },
+        "tag": {
+          "description": "The list of tags inside the folder.",
+          "items": {
+            "$ref": "Tag"
+          },
+          "type": "array"
+        },
+        "trigger": {
+          "items": {
+            "$ref": "Trigger"
+          },
+          "type": "array",
+          "description": "The list of triggers inside the folder."
+        }
+      },
+      "type": "object",
+      "id": "FolderEntities",
+      "description": "Represents a Google Tag Manager Folder's contents."
+    },
+    "Tag": {
+      "description": "Represents a Google Tag Manager Tag.",
+      "id": "Tag",
+      "properties": {
+        "scheduleStartMs": {
+          "format": "int64",
+          "type": "string",
+          "description": "The start timestamp in milliseconds to schedule a tag."
+        },
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "notes": {
+          "description": "User notes on how to apply this tag in the container.",
+          "type": "string"
+        },
+        "priority": {
+          "$ref": "Parameter",
+          "description": "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0."
+        },
+        "scheduleEndMs": {
+          "description": "The end timestamp in milliseconds to schedule a tag.",
+          "type": "string",
+          "format": "int64"
+        },
+        "firingTriggerId": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false."
+        },
+        "parameter": {
+          "type": "array",
+          "description": "The tag's parameters.",
+          "items": {
+            "$ref": "Parameter"
+          }
+        },
+        "liveOnly": {
+          "description": "If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode).",
+          "type": "boolean"
+        },
+        "paused": {
+          "description": "True if the tag is paused.",
+          "type": "boolean"
+        },
+        "blockingTriggerId": {
+          "description": "Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified."
+        },
+        "accountId": {
+          "type": "string",
+          "description": "GTM Account ID."
+        },
+        "parentFolderId": {
+          "type": "string",
+          "description": "Parent folder id."
+        },
+        "tagFiringOption": {
+          "type": "string",
+          "enum": [
+            "unlimited",
+            "oncePerEvent",
+            "oncePerLoad"
+          ],
+          "description": "Option to fire this tag.",
+          "enumDescriptions": [
+            "Tag can be fired multiple times per event.",
+            "Tag can only be fired per event but can be fired multiple times per load (e.g., app load or page load).",
+            "Tag can only be fired per load (e.g., app load or page load)."
+          ]
+        },
+        "setupTag": {
+          "type": "array",
+          "description": "The list of setup tags. Currently we only allow one.",
+          "items": {
+            "$ref": "SetupTag"
+          }
+        },
+        "tagId": {
+          "description": "The Tag ID uniquely identifies the GTM Tag.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Tag display name.",
+          "type": "string"
+        },
+        "teardownTag": {
+          "description": "The list of teardown tags. Currently we only allow one.",
+          "type": "array",
+          "items": {
+            "$ref": "TeardownTag"
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "GTM Tag Type."
+        }
+      },
+      "type": "object"
+    },
+    "Folder": {
+      "description": "Represents a Google Tag Manager Folder.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Folder display name."
+        },
+        "folderId": {
+          "type": "string",
+          "description": "The Folder ID uniquely identifies the GTM Folder."
+        },
+        "accountId": {
+          "type": "string",
+          "description": "GTM Account ID."
+        },
+        "containerId": {
+          "description": "GTM Container ID.",
+          "type": "string"
+        },
+        "fingerprint": {
+          "description": "The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified.",
+          "type": "string"
+        }
+      },
+      "id": "Folder",
+      "type": "object"
+    }
+  },
+  "canonicalName": "Tag Manager"
+}
