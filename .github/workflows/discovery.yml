@@ -1,0 +1,20 @@
+name: discovery-drift
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          curl -fsSL 'https://tagmanager.googleapis.com/$discovery/rest?version=v1' -o /tmp/v1.json
+          curl -fsSL 'https://tagmanager.googleapis.com/$discovery/rest?version=v2' -o /tmp/v2.json
+          cmp internal/discovery/v1.json /tmp/v1.json
+          cmp internal/discovery/v2.json /tmp/v2.json

@@ -1,0 +1,35 @@
+name: Bug report
+description: Report unexpected provider behavior
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Provider version
+    validations:
+      required: true
+  - type: dropdown
+    id: api
+    attributes:
+      label: GTM API version
+      options: [v2, v1]
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Terraform configuration
+      description: Remove credentials, access tokens, authorization codes, and snippets.
+      render: terraform
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Actual and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove secrets before submitting logs.

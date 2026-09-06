@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+*.test
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform-provider-google-tag-manager
+dist/
+coverage.out

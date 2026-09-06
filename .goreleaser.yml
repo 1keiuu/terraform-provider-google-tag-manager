@@ -1,0 +1,49 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+    - go test ./...
+
+builds:
+  - id: provider
+    binary: terraform-provider-google-tag-manager_v{{ .Version }}
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - freebsd
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - ids: [provider]
+    formats: [zip]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+
+signs:
+  - artifacts: checksum
+    args:
+      - --batch
+      - --local-user
+      - '{{ .Env.GPG_FINGERPRINT }}'
+      - --output
+      - '${signature}'
+      - --detach-sign
+      - '${artifact}'
+
+release:
+  draft: false
+  prerelease: auto
+
+changelog:
+  use: github-native
