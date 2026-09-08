@@ -27,4 +27,4 @@ Lists all GTM Zones of a GTM container workspace.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `zone_json` (String) All GTM Zones of a GTM Container.
+- `zone_json` (String, Sensitive) All GTM Zones of a GTM Container.

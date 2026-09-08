@@ -25,8 +25,10 @@ gcloud auth application-default login \
 ```
 
 CIではWorkload Identity Federationまたはサービスアカウント偽装を利用できます。
-JSON資格情報を使う場合は、`GOOGLE_CREDENTIALS`へJSON本文を設定するか、
-`GOOGLE_APPLICATION_CREDENTIALS`へファイルパスを設定します。
+`credentials`または`GOOGLE_CREDENTIALS`へ直接設定できるJSONは、サービス
+アカウントまたは認可済みユーザーの資格情報に限られます。資格情報ファイルや
+Workload Identity Federationは、`GOOGLE_APPLICATION_CREDENTIALS`を使った
+Application Default Credentialsとして設定します。
 
 ## Provider設定
 
@@ -77,6 +79,11 @@ resource "gtm_folder" "analytics" {
 APIの再帰的な`Parameter`や`Condition`は、`parameter_json`や
 `filter_json`のようなJSON属性で設定します。`jsonencode`を使うとHCLの値から
 安全にJSONを生成できます。
+
+構造化されたJSON属性は、Terraformの出力やログで値を隠すため機密属性として
+扱われます。ただし、機密属性の指定はstateを暗号化しません。GTMのParameterや
+Templateへトークン、資格情報、カスタムコードを設定する場合は、暗号化された
+remote backendを使い、stateへのアクセスを必要最小限に制限してください。
 
 ## Import
 

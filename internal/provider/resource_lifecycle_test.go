@@ -8,8 +8,6 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
 
@@ -51,9 +49,7 @@ func TestWorkspaceResourceLifecycle(t *testing.T) {
 	}))
 	defer server.Close()
 
-	factories := map[string]func() (tfprotov6.ProviderServer, error){
-		"gtm": providerserver.NewProtocol6WithError(New("test")()),
-	}
+	factories := testProviderFactories(server.URL)
 	config := func(name, description string) string {
 		descriptionConfiguration := ""
 		if description != "" {
@@ -61,10 +57,9 @@ func TestWorkspaceResourceLifecycle(t *testing.T) {
 		}
 		return fmt.Sprintf(`
 provider "gtm" {
-  access_token        = "test-token"
-  endpoint            = %q
-  requests_per_second = 1000
-  max_retries         = 0
+	access_token        = "test-token"
+	requests_per_second = 1000
+	max_retries         = 0
 }
 
 resource "gtm_workspace" "test" {
@@ -72,7 +67,7 @@ resource "gtm_workspace" "test" {
   name   = %q
 %s
 }
-`, server.URL, name, descriptionConfiguration)
+`, name, descriptionConfiguration)
 	}
 
 	resource.UnitTest(t, resource.TestCase{

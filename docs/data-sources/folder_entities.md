@@ -27,6 +27,6 @@ List all entities in a GTM Folder.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `tag_json` (String) The list of tags inside the folder.
-- `trigger_json` (String) The list of triggers inside the folder.
-- `variable_json` (String) The list of variables inside the folder.
+- `tag_json` (String, Sensitive) The list of tags inside the folder.
+- `trigger_json` (String, Sensitive) The list of triggers inside the folder.
+- `variable_json` (String, Sensitive) The list of variables inside the folder.

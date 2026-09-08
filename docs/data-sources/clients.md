@@ -26,5 +26,5 @@ Lists all GTM Clients of a GTM container workspace.
 
 ### Read-Only
 
-- `client_json` (String) All GTM Clients of a GTM Container.
+- `client_json` (String, Sensitive) All GTM Clients of a GTM Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

@@ -26,5 +26,5 @@ Lists all Google tag configs in a Container.
 
 ### Read-Only
 
-- `gtag_config_json` (String) All Google tag configs in a Container.
+- `gtag_config_json` (String, Sensitive) All Google tag configs in a Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

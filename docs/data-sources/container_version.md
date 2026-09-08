@@ -26,20 +26,20 @@ Gets a Container Version.
 ### Read-Only
 
 - `account_id` (String) GTM Account ID.
-- `built_in_variable_json` (String) The built-in variables in the container that this version was taken from.
-- `client_json` (String) The clients in the container that this version was taken from.
+- `built_in_variable_json` (String, Sensitive) The built-in variables in the container that this version was taken from.
+- `client_json` (String, Sensitive) The clients in the container that this version was taken from.
 - `container_id` (String) GTM Container ID.
-- `container_json` (String) The container that this version was taken from.
-- `custom_template_json` (String) The custom templates in the container that this version was taken from.
+- `container_json` (String, Sensitive) The container that this version was taken from.
+- `custom_template_json` (String, Sensitive) The custom templates in the container that this version was taken from.
 - `deleted` (Boolean) A value of true indicates this container version has been deleted.
 - `description` (String) Container version description.
 - `fingerprint` (String) The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified.
-- `folder_json` (String) The folders in the container that this version was taken from.
-- `gtag_config_json` (String) The Google tag configs in the container that this version was taken from.
+- `folder_json` (String, Sensitive) The folders in the container that this version was taken from.
+- `gtag_config_json` (String, Sensitive) The Google tag configs in the container that this version was taken from.
 - `name` (String) Container version display name.
-- `tag_json` (String) The tags in the container that this version was taken from.
+- `tag_json` (String, Sensitive) The tags in the container that this version was taken from.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
-- `transformation_json` (String) The transformations in the container that this version was taken from.
-- `trigger_json` (String) The triggers in the container that this version was taken from.
-- `variable_json` (String) The variables in the container that this version was taken from.
-- `zone_json` (String) The zones in the container that this version was taken from.
+- `transformation_json` (String, Sensitive) The transformations in the container that this version was taken from.
+- `trigger_json` (String, Sensitive) The triggers in the container that this version was taken from.
+- `variable_json` (String, Sensitive) The variables in the container that this version was taken from.
+- `zone_json` (String, Sensitive) The zones in the container that this version was taken from.

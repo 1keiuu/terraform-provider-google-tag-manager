@@ -24,7 +24,7 @@ Manages a Google Tag Manager Client object through API v2.
 ### Optional
 
 - `notes` (String) User notes on how to apply this tag in the container.
-- `parameter_json` (String) The client's parameters.
+- `parameter_json` (String, Sensitive) The client's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `priority` (Number) Priority determines relative firing order.
 

@@ -32,8 +32,7 @@ provider "gtm" {}
 ### Optional
 
 - `access_token` (String, Sensitive) A short-lived OAuth 2.0 access token.
-- `credentials` (String, Sensitive) Google credential JSON or a path to a JSON credential file. Application Default Credentials are used when omitted.
-- `endpoint` (String) Tag Manager API endpoint override.
+- `credentials` (String, Sensitive) Inline Google service account or authorized user credential JSON. Application Default Credentials are used when omitted.
 - `impersonate_service_account` (String) Service account email to impersonate.
 - `impersonate_service_account_delegates` (List of String) Delegation chain used for service account impersonation.
 - `max_retries` (Number) Maximum retries for rate limiting, quota exhaustion, transient server failures, and transport errors. Defaults to 5.

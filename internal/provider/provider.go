@@ -2,15 +2,14 @@ package provider
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
-	"regexp"
 	"strings"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/float64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/action"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -30,6 +29,11 @@ import (
 
 const defaultEndpoint = "https://tagmanager.googleapis.com/"
 
+const (
+	googleOAuthEndpoint  = "https://oauth2.googleapis.com/token"
+	googleUniverseDomain = "googleapis.com"
+)
+
 var defaultScopes = []string{
 	"https://www.googleapis.com/auth/tagmanager.readonly",
 	"https://www.googleapis.com/auth/tagmanager.edit.containers",
@@ -41,7 +45,8 @@ var defaultScopes = []string{
 }
 
 type tagManagerProvider struct {
-	version string
+	version  string
+	endpoint string
 }
 
 type providerModel struct {
@@ -50,7 +55,6 @@ type providerModel struct {
 	ImpersonateServiceAccount          types.String  `tfsdk:"impersonate_service_account"`
 	ImpersonateServiceAccountDelegates types.List    `tfsdk:"impersonate_service_account_delegates"`
 	Scopes                             types.List    `tfsdk:"scopes"`
-	Endpoint                           types.String  `tfsdk:"endpoint"`
 	RequestTimeout                     types.Int64   `tfsdk:"request_timeout"`
 	RequestsPerSecond                  types.Float64 `tfsdk:"requests_per_second"`
 	MaxRetries                         types.Int64   `tfsdk:"max_retries"`
@@ -61,7 +65,7 @@ var _ provider.ProviderWithActions = &tagManagerProvider{}
 
 func New(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &tagManagerProvider{version: version}
+		return &tagManagerProvider{version: version, endpoint: defaultEndpoint}
 	}
 }
 
@@ -77,7 +81,7 @@ func (p *tagManagerProvider) Schema(_ context.Context, _ provider.SchemaRequest,
 			"credentials": schema.StringAttribute{
 				Optional:    true,
 				Sensitive:   true,
-				Description: "Google credential JSON or a path to a JSON credential file. Application Default Credentials are used when omitted.",
+				Description: "Inline Google service account or authorized user credential JSON. Application Default Credentials are used when omitted.",
 			},
 			"access_token": schema.StringAttribute{
 				Optional:    true,
@@ -97,13 +101,6 @@ func (p *tagManagerProvider) Schema(_ context.Context, _ provider.SchemaRequest,
 				Optional:    true,
 				ElementType: types.StringType,
 				Description: "OAuth scopes. All Tag Manager scopes are requested by default.",
-			},
-			"endpoint": schema.StringAttribute{
-				Optional:    true,
-				Description: "Tag Manager API endpoint override.",
-				Validators: []validator.String{
-					stringvalidator.RegexMatches(regexp.MustCompile(`^https?://`), "endpoint must use http or https"),
-				},
 			},
 			"request_timeout": schema.Int64Attribute{
 				Optional:    true,
@@ -161,12 +158,12 @@ func (p *tagManagerProvider) Configure(ctx context.Context, request provider.Con
 
 	baseOptions := []option.ClientOption{option.WithScopes(scopes...)}
 	if credentials != "" {
-		contents, err := credentialContents(credentials)
+		credentialOption, err := validatedCredentialOption(credentials)
 		if err != nil {
-			response.Diagnostics.AddError("Unable to read Google credentials", err.Error())
+			response.Diagnostics.AddError("Invalid Google credentials", err.Error())
 			return
 		}
-		baseOptions = append(baseOptions, option.WithCredentialsJSON(contents))
+		baseOptions = append(baseOptions, credentialOption)
 	}
 	if accessToken != "" {
 		baseOptions = append(baseOptions, option.WithTokenSource(oauth2.StaticTokenSource(&oauth2.Token{AccessToken: accessToken})))
@@ -197,7 +194,7 @@ func (p *tagManagerProvider) Configure(ctx context.Context, request provider.Con
 	timeout := int64Value(config.RequestTimeout, 60)
 	httpClient.Timeout = time.Duration(timeout) * time.Second
 	requestRate := float64Value(config.RequestsPerSecond, 0.25)
-	endpoint := configuredString(config.Endpoint, "GTM_ENDPOINT")
+	endpoint := p.endpoint
 	if endpoint == "" {
 		endpoint = defaultEndpoint
 	}
@@ -254,15 +251,33 @@ func configuredString(value types.String, environmentVariable string) string {
 	return strings.TrimSpace(os.Getenv(environmentVariable))
 }
 
-func credentialContents(value string) ([]byte, error) {
-	if strings.HasPrefix(strings.TrimSpace(value), "{") {
-		return []byte(value), nil
+func validatedCredentialOption(value string) (option.ClientOption, error) {
+	contents := []byte(strings.TrimSpace(value))
+	var metadata struct {
+		Type           string `json:"type"`
+		TokenURI       string `json:"token_uri"`
+		UniverseDomain string `json:"universe_domain"`
 	}
-	contents, err := os.ReadFile(value)
-	if err != nil {
-		return nil, fmt.Errorf("read credential file %q: %w", value, err)
+	if err := json.Unmarshal(contents, &metadata); err != nil {
+		return nil, fmt.Errorf("credentials must be valid inline JSON: %w", err)
 	}
-	return contents, nil
+	if metadata.UniverseDomain != "" && metadata.UniverseDomain != googleUniverseDomain {
+		return nil, fmt.Errorf("credentials universe_domain must be %q", googleUniverseDomain)
+	}
+
+	switch metadata.Type {
+	case "service_account":
+		if metadata.TokenURI != "" && metadata.TokenURI != googleOAuthEndpoint {
+			return nil, fmt.Errorf("service account token_uri must be %q", googleOAuthEndpoint)
+		}
+		return option.WithAuthCredentialsJSON(option.ServiceAccount, contents), nil
+	case "authorized_user":
+		return option.WithAuthCredentialsJSON(option.AuthorizedUser, contents), nil
+	case "":
+		return nil, fmt.Errorf("credentials JSON must contain a type field")
+	default:
+		return nil, fmt.Errorf("credential type %q is not accepted directly; configure it through Application Default Credentials", metadata.Type)
+	}
 }
 
 func listStrings(ctx context.Context, value types.List, diagnostics *diag.Diagnostics) []string {

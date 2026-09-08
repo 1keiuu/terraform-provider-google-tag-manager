@@ -23,7 +23,7 @@ Manages a Google Tag Manager CustomTemplate object through API v2.
 
 ### Optional
 
-- `gallery_reference_json` (String) A reference to the Community Template Gallery entry.
+- `gallery_reference_json` (String, Sensitive) A reference to the Community Template Gallery entry.
 
 ### Read-Only
 

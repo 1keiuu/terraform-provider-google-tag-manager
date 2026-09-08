@@ -41,8 +41,11 @@ data "gtm_accounts" "available" {}
 ```
 
 Application Default Credentials are used when the provider has no explicit
-authentication settings. Credential JSON, OAuth access tokens, and service
-account impersonation are also supported.
+authentication settings. The `credentials` attribute accepts inline service
+account or authorized user JSON. Credential files and Workload Identity
+Federation should be configured through Application Default Credentials using
+`GOOGLE_APPLICATION_CREDENTIALS`. OAuth access tokens and service account
+impersonation are also supported.
 
 ```hcl
 resource "gtm_workspace" "site" {
@@ -93,6 +96,15 @@ ending in `_json`. This preserves the full GTM `Parameter`, `Condition`, and
 Resource IDs are canonical API-relative paths such as
 `accounts/123456/containers/789012/workspaces/3/tags/7`. They can be passed
 directly to a child resource's `parent` attribute or used for import.
+
+## State security
+
+Structured `_json` attributes are marked sensitive to reduce accidental
+exposure in Terraform output and logs. Terraform sensitivity is display
+metadata and does not encrypt state. GTM parameters and templates can contain
+credentials, tokens, or custom code, so use an encrypted remote backend with
+strict access controls and avoid placing secrets in GTM configuration when a
+secret-management integration is available.
 
 ## Development
 

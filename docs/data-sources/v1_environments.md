@@ -22,4 +22,4 @@ Lists all GTM Environments of a GTM Container.
 
 ### Read-Only
 
-- `environments_json` (String) All Environments of a GTM Container.
+- `environments_json` (String, Sensitive) All Environments of a GTM Container.

@@ -29,13 +29,13 @@ Gets a GTM Tag.
 - `live_only` (Boolean) If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode).
 - `name` (String) Tag display name.
 - `notes` (String) User notes on how to apply this tag in the container.
-- `parameter_json` (String) The tag's parameters.
+- `parameter_json` (String, Sensitive) The tag's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `paused` (Boolean) True if the tag is paused.
-- `priority_json` (String) User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0.
+- `priority_json` (String, Sensitive) User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0.
 - `schedule_end_ms` (String) The end timestamp in milliseconds to schedule a tag.
 - `schedule_start_ms` (String) The start timestamp in milliseconds to schedule a tag.
-- `setup_tag_json` (String) The list of setup tags. Currently we only allow one.
+- `setup_tag_json` (String, Sensitive) The list of setup tags. Currently we only allow one.
 - `tag_firing_option` (String) Option to fire this tag.
-- `teardown_tag_json` (String) The list of teardown tags. Currently we only allow one.
+- `teardown_tag_json` (String, Sensitive) The list of teardown tags. Currently we only allow one.
 - `type` (String) GTM Tag Type.

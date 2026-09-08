@@ -98,6 +98,60 @@ func TestProviderSchemaIsValid(t *testing.T) {
 	}
 }
 
+func TestStructuredJSONAttributesAreSensitive(t *testing.T) {
+	t.Parallel()
+	assertSensitive := func(owner string, definitions map[string]fieldDefinition) {
+		t.Helper()
+		for name, definition := range definitions {
+			if definition.Kind == fieldJSON && !definition.Sensitive {
+				t.Errorf("%s.%s is structured JSON but is not sensitive", owner, name)
+			}
+		}
+	}
+
+	for _, spec := range resourceSpecs() {
+		document, err := discovery.Load(spec.Version)
+		if err != nil {
+			t.Fatal(err)
+		}
+		_, definitions, err := resourceSchemaAttributes(spec, document)
+		if err != nil {
+			t.Fatal(err)
+		}
+		assertSensitive(spec.TypeName, definitions)
+	}
+	for _, spec := range dataSourceSpecs() {
+		document, err := discovery.Load(spec.Version)
+		if err != nil {
+			t.Fatal(err)
+		}
+		method, err := document.Method(spec.Method)
+		if err != nil {
+			t.Fatal(err)
+		}
+		_, definitions, err := dataSourceSchemaAttributes(method, document)
+		if err != nil {
+			t.Fatal(err)
+		}
+		assertSensitive(spec.TypeName, definitions)
+	}
+	for _, spec := range actionSpecs() {
+		document, err := discovery.Load(spec.Version)
+		if err != nil {
+			t.Fatal(err)
+		}
+		method, err := document.Method(spec.Method)
+		if err != nil {
+			t.Fatal(err)
+		}
+		_, definitions, err := actionSchemaAttributes(method, document)
+		if err != nil {
+			t.Fatal(err)
+		}
+		assertSensitive(spec.TypeName, definitions)
+	}
+}
+
 func TestTypeNamesAreUnique(t *testing.T) {
 	t.Parallel()
 	check := func(kind string, names []string) {

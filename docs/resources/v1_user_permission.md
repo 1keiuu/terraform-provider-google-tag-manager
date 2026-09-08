@@ -22,8 +22,8 @@ Manages a Google Tag Manager UserAccess object through API v1.
 
 ### Optional
 
-- `account_access_json` (String) GTM Account access permissions.
-- `container_access_json` (String) GTM Container access permissions.
+- `account_access_json` (String, Sensitive) GTM Account access permissions.
+- `container_access_json` (String, Sensitive) GTM Container access permissions.
 
 ### Read-Only
 

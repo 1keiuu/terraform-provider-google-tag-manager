@@ -2,14 +2,17 @@ version: 2
 
 before:
   hooks:
-    - go mod tidy
+    - go mod verify
     - go test ./...
 
 builds:
   - id: provider
     binary: terraform-provider-google-tag-manager_v{{ .Version }}
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
     ldflags:
-      - -s -w -X main.version={{ .Version }}
+      - -s -w -buildid= -X main.version={{ .Version }}
     env:
       - CGO_ENABLED=0
     goos:
@@ -29,6 +32,9 @@ archives:
 
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+  extra_files:
+    - glob: ./terraform-registry-manifest.json
+      name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
 
 signs:
   - artifacts: checksum
@@ -44,6 +50,9 @@ signs:
 release:
   draft: false
   prerelease: auto
+  extra_files:
+    - glob: ./terraform-registry-manifest.json
+      name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
 
 changelog:
   use: github-native

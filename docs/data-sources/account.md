@@ -22,7 +22,7 @@ Gets a GTM Account.
 ### Read-Only
 
 - `account_id` (String) The Account ID uniquely identifies the GTM Account.
-- `features_json` (String) Read-only Account feature set
+- `features_json` (String, Sensitive) Read-only Account feature set
 - `fingerprint` (String) The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified.
 - `name` (String) Account display name.
 - `share_data` (Boolean) Whether the account shares data anonymously with Google and others. This flag enables benchmarking by sharing your data in an anonymous form. Google will remove all identifiable information about your website, combine the data with hundreds of other anonymous sites and report aggregate trends in the benchmarking service.

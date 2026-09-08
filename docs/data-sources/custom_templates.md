@@ -27,4 +27,4 @@ Lists all GTM Templates of a GTM container workspace.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `template_json` (String) All GTM Custom Templates of a GTM Container.
+- `template_json` (String, Sensitive) All GTM Custom Templates of a GTM Container.

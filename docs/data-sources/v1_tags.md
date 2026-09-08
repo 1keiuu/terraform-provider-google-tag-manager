@@ -22,4 +22,4 @@ Lists all GTM Tags of a Container.
 
 ### Read-Only
 
-- `tags_json` (String) All GTM Tags of a GTM Container.
+- `tags_json` (String, Sensitive) All GTM Tags of a GTM Container.

@@ -27,5 +27,5 @@ Lists all Container Versions of a GTM Container.
 
 ### Read-Only
 
-- `container_version_header_json` (String) All container version headers of a GTM Container.
+- `container_version_header_json` (String, Sensitive) All container version headers of a GTM Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

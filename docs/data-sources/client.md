@@ -27,7 +27,7 @@ Gets a GTM Client.
 - `fingerprint` (String) The fingerprint of the GTM Client as computed at storage time. This value is recomputed whenever the client is modified.
 - `name` (String) Client display name.
 - `notes` (String) User notes on how to apply this tag in the container.
-- `parameter_json` (String) The client's parameters.
+- `parameter_json` (String, Sensitive) The client's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `priority` (Number) Priority determines relative firing order.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI

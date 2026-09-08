@@ -27,4 +27,4 @@ Lists all Workspaces that belong to a GTM Container.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `workspace_json` (String) All Workspaces of a GTM Container.
+- `workspace_json` (String, Sensitive) All Workspaces of a GTM Container.

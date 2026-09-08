@@ -25,7 +25,7 @@ Gets a Google tag config.
 - `container_id` (String) Google tag container ID.
 - `fingerprint` (String) The fingerprint of the Google tag config as computed at storage time. This value is recomputed whenever the config is modified.
 - `gtag_config_id` (String) The ID uniquely identifies the Google tag config.
-- `parameter_json` (String) The Google tag config's parameters.
+- `parameter_json` (String, Sensitive) The Google tag config's parameters.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
 - `type` (String) Google tag config type.
 - `workspace_id` (String) Google tag workspace ID. Only used by GTM containers. Set to 0 otherwise.

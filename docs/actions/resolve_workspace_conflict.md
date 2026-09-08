@@ -23,16 +23,16 @@ Resolves a merge conflict for a workspace entity by updating it to the resolved 
 
 > **NOTE**: [Write-only arguments](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments) are supported in Terraform 1.11 and later.
 
-- `built_in_variable_json` (String) The built in variable being represented by the entity.
+- `built_in_variable_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The built in variable being represented by the entity.
 - `change_status` (String) Represents how the entity has been changed in the workspace.
-- `client_json` (String) The client being represented by the entity.
-- `custom_template_json` (String) The custom template being represented by the entity.
+- `client_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The client being represented by the entity.
+- `custom_template_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The custom template being represented by the entity.
 - `fingerprint` (String) When provided, this fingerprint must match the fingerprint of the entity_in_workspace in the merge conflict.
-- `folder_json` (String) The folder being represented by the entity.
-- `gtag_config_json` (String) The gtag config being represented by the entity.
+- `folder_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The folder being represented by the entity.
+- `gtag_config_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The gtag config being represented by the entity.
 - `request_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) Complete JSON request body. Typed request attributes override fields with the same JSON name.
-- `tag_json` (String) The tag being represented by the entity.
-- `transformation_json` (String) The transformation being represented by the entity.
-- `trigger_json` (String) The trigger being represented by the entity.
-- `variable_json` (String) The variable being represented by the entity.
-- `zone_json` (String) The zone being represented by the entity.
+- `tag_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The tag being represented by the entity.
+- `transformation_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The transformation being represented by the entity.
+- `trigger_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The trigger being represented by the entity.
+- `variable_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The variable being represented by the entity.
+- `zone_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The zone being represented by the entity.

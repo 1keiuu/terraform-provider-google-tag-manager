@@ -21,7 +21,7 @@ Manages a Google Tag Manager Account object through API v2.
 
 ### Optional
 
-- `features_json` (String) Read-only Account feature set
+- `features_json` (String, Sensitive) Read-only Account feature set
 - `name` (String) Account display name.
 - `share_data` (Boolean) Whether the account shares data anonymously with Google and others. This flag enables benchmarking by sharing your data in an anonymous form. Google will remove all identifiable information about your website, combine the data with hundreds of other anonymous sites and report aggregate trends in the benchmarking service.
 

@@ -22,7 +22,7 @@ Manages a Google Tag Manager GtagConfig object through API v2.
 
 ### Optional
 
-- `parameter_json` (String) The Google tag config's parameters.
+- `parameter_json` (String, Sensitive) The Google tag config's parameters.
 
 ### Read-Only
 

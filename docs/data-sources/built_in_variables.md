@@ -26,5 +26,5 @@ Lists all the enabled Built-In Variables of a GTM Container.
 
 ### Read-Only
 
-- `built_in_variable_json` (String) All GTM BuiltInVariables of a GTM container.
+- `built_in_variable_json` (String, Sensitive) All GTM BuiltInVariables of a GTM container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

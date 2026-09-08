@@ -156,7 +156,6 @@ func dataSourceSchemaAttributes(method *discovery.Method, document *discovery.Do
 				continue
 			}
 			definition.Computed = true
-			definition.Sensitive = isSensitiveField(definition.Terraform)
 			definitions[definition.Terraform] = definition
 		}
 	}
@@ -194,7 +193,6 @@ func actionSchemaAttributes(method *discovery.Method, document *discovery.Docume
 				continue
 			}
 			definition.Optional = true
-			definition.Sensitive = isSensitiveField(definition.Terraform)
 			definitions[definition.Terraform] = definition
 		}
 		definitions["request_json"] = fieldDefinition{
@@ -222,7 +220,7 @@ func propertyDefinition(apiName string, property *discovery.Property) fieldDefin
 		Description: property.Description,
 		Enum:        append([]string(nil), property.Enum...),
 		Kind:        kind,
-		Sensitive:   isSensitiveField(terraformName),
+		Sensitive:   kind == fieldJSON || isSensitiveField(terraformName),
 	}
 }
 

@@ -17,4 +17,4 @@ Lists all GTM Accounts that a user has access to.
 
 ### Read-Only
 
-- `accounts_json` (String) List of GTM Accounts that a user has access to.
+- `accounts_json` (String, Sensitive) List of GTM Accounts that a user has access to.

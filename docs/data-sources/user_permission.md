@@ -21,7 +21,7 @@ Gets a user's Account & Container access.
 
 ### Read-Only
 
-- `account_access_json` (String) GTM Account access permissions.
+- `account_access_json` (String, Sensitive) GTM Account access permissions.
 - `account_id` (String) The Account ID uniquely identifies the GTM Account.
-- `container_access_json` (String) GTM Container access permissions.
+- `container_access_json` (String, Sensitive) GTM Container access permissions.
 - `email_address` (String) User's email address.

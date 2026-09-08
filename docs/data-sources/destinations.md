@@ -21,5 +21,5 @@ Lists all Destinations linked to a GTM Container.
 
 ### Read-Only
 
-- `destination_json` (String) All Destinations linked to a GTM Container.
+- `destination_json` (String, Sensitive) All Destinations linked to a GTM Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

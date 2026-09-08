@@ -23,5 +23,5 @@ Applies multiple entity changes to a workspace in one call. When creating new en
 
 > **NOTE**: [Write-only arguments](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments) are supported in Terraform 1.11 and later.
 
-- `changes_json` (String) The list of workspace changes to be applied.
+- `changes_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The list of workspace changes to be applied.
 - `request_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) Complete JSON request body. Typed request attributes override fields with the same JSON name.

@@ -27,4 +27,4 @@ Lists all GTM Transformations of a GTM container workspace.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `transformation_json` (String) All GTM Transformations of a GTM Container.
+- `transformation_json` (String, Sensitive) All GTM Transformations of a GTM Container.

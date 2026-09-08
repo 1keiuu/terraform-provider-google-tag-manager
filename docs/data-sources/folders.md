@@ -26,5 +26,5 @@ Lists all GTM Folders of a Container.
 
 ### Read-Only
 
-- `folder_json` (String) All GTM Folders of a GTM Container.
+- `folder_json` (String, Sensitive) All GTM Folders of a GTM Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

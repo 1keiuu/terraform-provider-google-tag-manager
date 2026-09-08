@@ -26,5 +26,5 @@ Lists all Containers that belongs to a GTM Account.
 
 ### Read-Only
 
-- `container_json` (String) All Containers of a GTM Account.
+- `container_json` (String, Sensitive) All Containers of a GTM Account.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

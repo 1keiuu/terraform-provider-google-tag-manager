@@ -21,15 +21,15 @@ Manages a Google Tag Manager ContainerVersion object through API v1.
 
 ### Optional
 
-- `container_json` (String) The container that this version was taken from.
+- `container_json` (String, Sensitive) The container that this version was taken from.
 - `deleted` (Boolean) A value of true indicates this container version has been deleted.
-- `folder_json` (String) The folders in the container that this version was taken from.
+- `folder_json` (String, Sensitive) The folders in the container that this version was taken from.
 - `name` (String) Container version display name.
 - `notes` (String) User notes on how to apply this container version in the container.
 - `quick_preview` (Boolean) The creation of this version may be for quick preview and shouldn't be saved.
-- `tag_json` (String) The tags in the container that this version was taken from.
-- `trigger_json` (String) The triggers in the container that this version was taken from.
-- `variable_json` (String) The variables in the container that this version was taken from.
+- `tag_json` (String, Sensitive) The tags in the container that this version was taken from.
+- `trigger_json` (String, Sensitive) The triggers in the container that this version was taken from.
+- `variable_json` (String, Sensitive) The variables in the container that this version was taken from.
 
 ### Read-Only
 

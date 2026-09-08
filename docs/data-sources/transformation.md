@@ -26,7 +26,7 @@ Gets a GTM Transformation.
 - `fingerprint` (String) The fingerprint of the GTM Transformation as computed at storage time. This value is recomputed whenever the transformation is modified.
 - `name` (String) Transformation display name.
 - `notes` (String) User notes on how to apply this transformation in the container.
-- `parameter_json` (String) The transformation's parameters.
+- `parameter_json` (String, Sensitive) The transformation's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
 - `transformation_id` (String) The Transformation ID uniquely identifies the GTM transformation.
