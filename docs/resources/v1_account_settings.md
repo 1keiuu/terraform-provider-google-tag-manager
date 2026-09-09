@@ -3,12 +3,12 @@
 page_title: "gtm_v1_account_settings Resource - google-tag-manager"
 subcategory: ""
 description: |-
-  Manages a Google Tag Manager Account object through API v1.
+  Manages settings for an existing Google Tag Manager Account through API v1. The Tag Manager API does not support creating Accounts, and removing this resource does not delete the Account.
 ---
 
 # gtm_v1_account_settings (Resource)
 
-Manages a Google Tag Manager Account object through API v1.
+Manages settings for an existing Google Tag Manager Account through API v1. The Tag Manager API does not support creating Accounts, and removing this resource does not delete the Account.
 
 
 

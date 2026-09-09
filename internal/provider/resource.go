@@ -46,8 +46,12 @@ func (r *genericResource) Schema(_ context.Context, _ resource.SchemaRequest, re
 	}
 	r.document = document
 	r.definitions = definitions
+	description := r.spec.Description
+	if description == "" {
+		description = fmt.Sprintf("Manages a Google Tag Manager %s object through API %s.", r.spec.SchemaRef, r.spec.Version)
+	}
 	response.Schema = schema.Schema{
-		Description: fmt.Sprintf("Manages a Google Tag Manager %s object through API %s.", r.spec.SchemaRef, r.spec.Version),
+		Description: description,
 		Attributes:  attributes,
 	}
 }

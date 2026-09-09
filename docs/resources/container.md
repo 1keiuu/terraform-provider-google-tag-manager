@@ -3,12 +3,12 @@
 page_title: "gtm_container Resource - google-tag-manager"
 subcategory: ""
 description: |-
-  Manages a Google Tag Manager Container object through API v2.
+  Creates and manages a Google Tag Manager Container under an existing Account through API v2.
 ---
 
 # gtm_container (Resource)
 
-Manages a Google Tag Manager Container object through API v2.
+Creates and manages a Google Tag Manager Container under an existing Account through API v2.
 
 
 
