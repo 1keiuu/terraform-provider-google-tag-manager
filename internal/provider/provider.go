@@ -156,6 +156,7 @@ func (p *tagManagerProvider) Configure(ctx context.Context, request provider.Con
 		return
 	}
 
+	authContext := context.WithoutCancel(ctx)
 	baseOptions := []option.ClientOption{option.WithScopes(scopes...)}
 	if credentials != "" {
 		credentialOption, err := validatedCredentialOption(credentials)
@@ -174,7 +175,7 @@ func (p *tagManagerProvider) Configure(ctx context.Context, request provider.Con
 		if response.Diagnostics.HasError() {
 			return
 		}
-		tokenSource, err := impersonate.CredentialsTokenSource(ctx, impersonate.CredentialsConfig{
+		tokenSource, err := impersonate.CredentialsTokenSource(authContext, impersonate.CredentialsConfig{
 			TargetPrincipal: impersonatedAccount,
 			Scopes:          scopes,
 			Delegates:       delegates,
@@ -186,7 +187,7 @@ func (p *tagManagerProvider) Configure(ctx context.Context, request provider.Con
 		baseOptions = []option.ClientOption{option.WithTokenSource(tokenSource)}
 	}
 
-	httpClient, _, err := htransport.NewClient(ctx, baseOptions...)
+	httpClient, _, err := htransport.NewClient(authContext, baseOptions...)
 	if err != nil {
 		response.Diagnostics.AddError("Unable to configure Google authentication", err.Error())
 		return
