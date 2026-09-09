@@ -25,9 +25,9 @@ Manages a Google Tag Manager Variable object through API v2.
 
 - `disabling_trigger_id` (List of String) For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set.
 - `enabling_trigger_id` (List of String) For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set.
-- `format_value_json` (String) Option to convert a variable value to other value.
+- `format_value_json` (String, Sensitive) Option to convert a variable value to other value.
 - `notes` (String) User notes on how to apply this variable in the container.
-- `parameter_json` (String) The variable's parameters.
+- `parameter_json` (String, Sensitive) The variable's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `schedule_end_ms` (String) The end timestamp in milliseconds to schedule a variable.
 - `schedule_start_ms` (String) The start timestamp in milliseconds to schedule a variable.

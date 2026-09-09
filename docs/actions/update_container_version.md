@@ -24,22 +24,22 @@ Updates a Container Version.
 > **NOTE**: [Write-only arguments](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments) are supported in Terraform 1.11 and later.
 
 - `account_id` (String) GTM Account ID.
-- `built_in_variable_json` (String) The built-in variables in the container that this version was taken from.
-- `client_json` (String) The clients in the container that this version was taken from.
+- `built_in_variable_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The built-in variables in the container that this version was taken from.
+- `client_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The clients in the container that this version was taken from.
 - `container_id` (String) GTM Container ID.
-- `container_json` (String) The container that this version was taken from.
+- `container_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The container that this version was taken from.
 - `container_version_id` (String) The Container Version ID uniquely identifies the GTM Container Version.
-- `custom_template_json` (String) The custom templates in the container that this version was taken from.
+- `custom_template_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The custom templates in the container that this version was taken from.
 - `deleted` (Boolean) A value of true indicates this container version has been deleted.
 - `description` (String) Container version description.
 - `fingerprint` (String) When provided, this fingerprint must match the fingerprint of the container version in storage.
-- `folder_json` (String) The folders in the container that this version was taken from.
-- `gtag_config_json` (String) The Google tag configs in the container that this version was taken from.
+- `folder_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The folders in the container that this version was taken from.
+- `gtag_config_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The Google tag configs in the container that this version was taken from.
 - `name` (String) Container version display name.
 - `request_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) Complete JSON request body. Typed request attributes override fields with the same JSON name.
-- `tag_json` (String) The tags in the container that this version was taken from.
+- `tag_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The tags in the container that this version was taken from.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
-- `transformation_json` (String) The transformations in the container that this version was taken from.
-- `trigger_json` (String) The triggers in the container that this version was taken from.
-- `variable_json` (String) The variables in the container that this version was taken from.
-- `zone_json` (String) The zones in the container that this version was taken from.
+- `transformation_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The transformations in the container that this version was taken from.
+- `trigger_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The triggers in the container that this version was taken from.
+- `variable_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The variables in the container that this version was taken from.
+- `zone_json` (String, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) The zones in the container that this version was taken from.

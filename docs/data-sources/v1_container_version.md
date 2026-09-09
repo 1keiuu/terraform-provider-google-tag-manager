@@ -23,12 +23,12 @@ Gets a Container Version.
 
 ### Read-Only
 
-- `container_json` (String) The container that this version was taken from.
+- `container_json` (String, Sensitive) The container that this version was taken from.
 - `deleted` (Boolean) A value of true indicates this container version has been deleted.
 - `fingerprint` (String) The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified.
-- `folder_json` (String) The folders in the container that this version was taken from.
+- `folder_json` (String, Sensitive) The folders in the container that this version was taken from.
 - `name` (String) Container version display name.
 - `notes` (String) User notes on how to apply this container version in the container.
-- `tag_json` (String) The tags in the container that this version was taken from.
-- `trigger_json` (String) The triggers in the container that this version was taken from.
-- `variable_json` (String) The variables in the container that this version was taken from.
+- `tag_json` (String, Sensitive) The tags in the container that this version was taken from.
+- `trigger_json` (String, Sensitive) The triggers in the container that this version was taken from.
+- `variable_json` (String, Sensitive) The variables in the container that this version was taken from.

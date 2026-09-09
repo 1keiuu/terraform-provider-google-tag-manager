@@ -22,4 +22,4 @@ Lists all GTM Triggers of a Container.
 
 ### Read-Only
 
-- `triggers_json` (String) All GTM Triggers of a GTM Container.
+- `triggers_json` (String, Sensitive) All GTM Triggers of a GTM Container.

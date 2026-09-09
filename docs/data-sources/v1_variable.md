@@ -28,7 +28,7 @@ Gets a GTM Variable.
 - `fingerprint` (String) The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified.
 - `name` (String) Variable display name.
 - `notes` (String) User notes on how to apply this variable in the container.
-- `parameter_json` (String) The variable's parameters.
+- `parameter_json` (String, Sensitive) The variable's parameters.
 - `parent_folder_id` (String) Parent folder id.
 - `schedule_end_ms` (String) The end timestamp in milliseconds to schedule a variable.
 - `schedule_start_ms` (String) The start timestamp in milliseconds to schedule a variable.

@@ -22,4 +22,4 @@ Lists all GTM Folders of a Container.
 
 ### Read-Only
 
-- `folders_json` (String) All GTM Folders of a GTM Container.
+- `folders_json` (String, Sensitive) All GTM Folders of a GTM Container.

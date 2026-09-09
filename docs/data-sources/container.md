@@ -24,7 +24,7 @@ Gets a Container.
 - `account_id` (String) GTM Account ID.
 - `container_id` (String) The Container ID uniquely identifies the GTM Container.
 - `domain_name` (List of String) List of domain names associated with the Container.
-- `features_json` (String) Read-only Container feature set.
+- `features_json` (String, Sensitive) Read-only Container feature set.
 - `fingerprint` (String) The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified.
 - `name` (String) Container display name.
 - `notes` (String) Container Notes.

@@ -27,4 +27,4 @@ Lists all GTM Triggers of a Container.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `trigger_json` (String) All GTM Triggers of a GTM Container.
+- `trigger_json` (String, Sensitive) All GTM Triggers of a GTM Container.

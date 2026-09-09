@@ -3,12 +3,12 @@
 page_title: "gtm_container Resource - google-tag-manager"
 subcategory: ""
 description: |-
-  Manages a Google Tag Manager Container object through API v2.
+  Creates and manages a Google Tag Manager Container under an existing Account through API v2.
 ---
 
 # gtm_container (Resource)
 
-Manages a Google Tag Manager Container object through API v2.
+Creates and manages a Google Tag Manager Container under an existing Account through API v2.
 
 
 
@@ -31,7 +31,7 @@ Manages a Google Tag Manager Container object through API v2.
 
 - `account_id` (String) GTM Account ID.
 - `container_id` (String) The Container ID uniquely identifies the GTM Container.
-- `features_json` (String) Read-only Container feature set.
+- `features_json` (String, Sensitive) Read-only Container feature set.
 - `fingerprint` (String) The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified.
 - `id` (String) Canonical API-relative resource path.
 - `path` (String) Canonical API-relative resource path.

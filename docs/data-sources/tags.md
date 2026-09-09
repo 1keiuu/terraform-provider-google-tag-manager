@@ -27,4 +27,4 @@ Lists all GTM Tags of a Container.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `tag_json` (String) All GTM Tags of a GTM Container.
+- `tag_json` (String, Sensitive) All GTM Tags of a GTM Container.

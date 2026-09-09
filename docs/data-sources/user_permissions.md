@@ -27,4 +27,4 @@ List all users that have access to the account along with Account and Container 
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `user_permission_json` (String) All GTM UserPermissions of a GTM Account.
+- `user_permission_json` (String, Sensitive) All GTM UserPermissions of a GTM Account.

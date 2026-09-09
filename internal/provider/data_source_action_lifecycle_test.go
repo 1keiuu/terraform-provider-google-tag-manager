@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"sync/atomic"
@@ -27,9 +26,9 @@ func TestAccountsDataSourcePagination(t *testing.T) {
 	defer server.Close()
 
 	resource.UnitTest(t, resource.TestCase{
-		ProtoV6ProviderFactories: testProviderFactories(),
+		ProtoV6ProviderFactories: testProviderFactories(server.URL),
 		Steps: []resource.TestStep{{
-			Config: testProviderConfig(server.URL) + `
+			Config: testProviderConfig() + `
 data "gtm_accounts" "test" {}
 `,
 			Check: resource.ComposeAggregateTestCheckFunc(
@@ -57,9 +56,9 @@ func TestSyncWorkspaceAction(t *testing.T) {
 	defer server.Close()
 
 	resource.UnitTest(t, resource.TestCase{
-		ProtoV6ProviderFactories: testProviderFactories(),
+		ProtoV6ProviderFactories: testProviderFactories(server.URL),
 		Steps: []resource.TestStep{{
-			Config: testProviderConfig(server.URL) + `
+			Config: testProviderConfig() + `
 action "gtm_sync_workspace" "test" {
   config {
     path = "accounts/1/containers/2/workspaces/3"
@@ -84,19 +83,18 @@ resource "terraform_data" "invoke" {
 	})
 }
 
-func testProviderFactories() map[string]func() (tfprotov6.ProviderServer, error) {
+func testProviderFactories(endpoint string) map[string]func() (tfprotov6.ProviderServer, error) {
 	return map[string]func() (tfprotov6.ProviderServer, error){
-		"gtm": providerserver.NewProtocol6WithError(New("test")()),
+		"gtm": providerserver.NewProtocol6WithError(&tagManagerProvider{version: "test", endpoint: endpoint}),
 	}
 }
 
-func testProviderConfig(endpoint string) string {
-	return fmt.Sprintf(`
+func testProviderConfig() string {
+	return `
 provider "gtm" {
-  access_token        = "test-token"
-  endpoint            = %q
-  requests_per_second = 1000
-  max_retries         = 0
+	access_token        = "test-token"
+	requests_per_second = 1000
+	max_retries         = 0
 }
-`, endpoint)
+`
 }

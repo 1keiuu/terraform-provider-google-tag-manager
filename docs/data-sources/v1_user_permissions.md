@@ -21,4 +21,4 @@ List all users that have access to the account along with Account and Container 
 
 ### Read-Only
 
-- `user_access_json` (String) All GTM AccountUsers of a GTM Account.
+- `user_access_json` (String, Sensitive) All GTM AccountUsers of a GTM Account.

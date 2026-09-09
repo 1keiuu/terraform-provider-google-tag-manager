@@ -24,7 +24,7 @@ Gets a GTM Template.
 - `account_id` (String) GTM Account ID.
 - `container_id` (String) GTM Container ID.
 - `fingerprint` (String) The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified.
-- `gallery_reference_json` (String) A reference to the Community Template Gallery entry.
+- `gallery_reference_json` (String, Sensitive) A reference to the Community Template Gallery entry.
 - `name` (String) Custom Template display name.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
 - `template_data` (String) The custom template in text format.

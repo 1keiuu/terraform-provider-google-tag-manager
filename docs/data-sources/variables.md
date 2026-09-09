@@ -27,4 +27,4 @@ Lists all GTM Variables of a Container.
 ### Read-Only
 
 - `next_page_token` (String) Continuation token for fetching the next page of results.
-- `variable_json` (String) All GTM Variables of a GTM Container.
+- `variable_json` (String, Sensitive) All GTM Variables of a GTM Container.

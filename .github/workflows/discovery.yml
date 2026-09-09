@@ -8,11 +8,18 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: discovery-drift
+  cancel-in-progress: true
+
 jobs:
   compare:
-    runs-on: ubuntu-latest
+    name: Compare discovery documents
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
       - run: |
           curl -fsSL 'https://tagmanager.googleapis.com/$discovery/rest?version=v1' -o /tmp/v1.json
           curl -fsSL 'https://tagmanager.googleapis.com/$discovery/rest?version=v2' -o /tmp/v2.json

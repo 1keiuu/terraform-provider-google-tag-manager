@@ -22,10 +22,10 @@ Manages a Google Tag Manager Zone object through API v2.
 
 ### Optional
 
-- `boundary_json` (String) This Zone's boundary.
-- `child_container_json` (String) Containers that are children of this Zone.
+- `boundary_json` (String, Sensitive) This Zone's boundary.
+- `child_container_json` (String, Sensitive) Containers that are children of this Zone.
 - `notes` (String) User notes on how to apply this zone in the container.
-- `type_restriction_json` (String) This Zone's type restrictions.
+- `type_restriction_json` (String, Sensitive) This Zone's type restrictions.
 
 ### Read-Only
 

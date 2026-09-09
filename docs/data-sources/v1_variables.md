@@ -22,4 +22,4 @@ Lists all GTM Variables of a Container.
 
 ### Read-Only
 
-- `variables_json` (String) All GTM Variables of a GTM Container.
+- `variables_json` (String, Sensitive) All GTM Variables of a GTM Container.

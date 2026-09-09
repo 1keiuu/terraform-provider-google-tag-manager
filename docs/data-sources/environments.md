@@ -26,5 +26,5 @@ Lists all GTM Environments of a GTM Container.
 
 ### Read-Only
 
-- `environment_json` (String) All Environments of a GTM Container.
+- `environment_json` (String, Sensitive) All Environments of a GTM Container.
 - `next_page_token` (String) Continuation token for fetching the next page of results.

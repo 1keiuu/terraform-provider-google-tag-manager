@@ -22,13 +22,13 @@ Gets a GTM Zone.
 ### Read-Only
 
 - `account_id` (String) GTM Account ID.
-- `boundary_json` (String) This Zone's boundary.
-- `child_container_json` (String) Containers that are children of this Zone.
+- `boundary_json` (String, Sensitive) This Zone's boundary.
+- `child_container_json` (String, Sensitive) Containers that are children of this Zone.
 - `container_id` (String) GTM Container ID.
 - `fingerprint` (String) The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the zone is modified.
 - `name` (String) Zone display name.
 - `notes` (String) User notes on how to apply this zone in the container.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
-- `type_restriction_json` (String) This Zone's type restrictions.
+- `type_restriction_json` (String, Sensitive) This Zone's type restrictions.
 - `workspace_id` (String) GTM Workspace ID.
 - `zone_id` (String) The Zone ID uniquely identifies the GTM Zone.

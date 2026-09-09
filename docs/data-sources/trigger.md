@@ -22,33 +22,33 @@ Gets a GTM Trigger.
 ### Read-Only
 
 - `account_id` (String) GTM Account ID.
-- `auto_event_filter_json` (String) Used in the case of auto event tracking.
-- `check_validation_json` (String) Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.
+- `auto_event_filter_json` (String, Sensitive) Used in the case of auto event tracking.
+- `check_validation_json` (String, Sensitive) Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.
 - `container_id` (String) GTM Container ID.
-- `continuous_time_min_milliseconds_json` (String) A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger.
-- `custom_event_filter_json` (String) Used in the case of custom event, which is fired iff all Conditions are true.
-- `event_name_json` (String) Name of the GTM event that is fired. Only valid for Timer triggers.
-- `filter_json` (String) The trigger will only fire iff all Conditions are true.
+- `continuous_time_min_milliseconds_json` (String, Sensitive) A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger.
+- `custom_event_filter_json` (String, Sensitive) Used in the case of custom event, which is fired iff all Conditions are true.
+- `event_name_json` (String, Sensitive) Name of the GTM event that is fired. Only valid for Timer triggers.
+- `filter_json` (String, Sensitive) The trigger will only fire iff all Conditions are true.
 - `fingerprint` (String) The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified.
-- `horizontal_scroll_percentage_list_json` (String) List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers.
-- `interval_json` (String) Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
-- `interval_seconds_json` (String) Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.
-- `limit_json` (String) Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers.
-- `max_timer_length_seconds_json` (String) Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.
+- `horizontal_scroll_percentage_list_json` (String, Sensitive) List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers.
+- `interval_json` (String, Sensitive) Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
+- `interval_seconds_json` (String, Sensitive) Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.
+- `limit_json` (String, Sensitive) Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers.
+- `max_timer_length_seconds_json` (String, Sensitive) Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.
 - `name` (String) Trigger display name.
 - `notes` (String) User notes on how to apply this trigger in the container.
-- `parameter_json` (String) Additional parameters.
+- `parameter_json` (String, Sensitive) Additional parameters.
 - `parent_folder_id` (String) Parent folder id.
-- `selector_json` (String) A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.
+- `selector_json` (String, Sensitive) A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.
 - `tag_manager_url` (String) Auto generated link to the tag manager UI
-- `total_time_min_milliseconds_json` (String) A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
+- `total_time_min_milliseconds_json` (String, Sensitive) A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
 - `trigger_id` (String) The Trigger ID uniquely identifies the GTM Trigger.
 - `type` (String) Defines the data layer event that causes this trigger.
-- `unique_trigger_id_json` (String) Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers.
-- `vertical_scroll_percentage_list_json` (String) List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers.
-- `visibility_selector_json` (String) A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.
-- `visible_percentage_max_json` (String) A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.
-- `visible_percentage_min_json` (String) A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.
-- `wait_for_tags_json` (String) Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers.
-- `wait_for_tags_timeout_json` (String) How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers.
+- `unique_trigger_id_json` (String, Sensitive) Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers.
+- `vertical_scroll_percentage_list_json` (String, Sensitive) List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers.
+- `visibility_selector_json` (String, Sensitive) A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.
+- `visible_percentage_max_json` (String, Sensitive) A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.
+- `visible_percentage_min_json` (String, Sensitive) A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.
+- `wait_for_tags_json` (String, Sensitive) Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers.
+- `wait_for_tags_timeout_json` (String, Sensitive) How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers.
 - `workspace_id` (String) GTM Workspace ID.

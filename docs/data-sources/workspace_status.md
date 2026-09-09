@@ -21,5 +21,5 @@ Finds conflicting and modified entities in the workspace.
 
 ### Read-Only
 
-- `merge_conflict_json` (String) The merge conflict after sync.
-- `workspace_change_json` (String) Entities that have been changed in the workspace.
+- `merge_conflict_json` (String, Sensitive) The merge conflict after sync.
+- `workspace_change_json` (String, Sensitive) Entities that have been changed in the workspace.

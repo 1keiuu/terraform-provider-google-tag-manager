@@ -24,7 +24,7 @@ Manages a Google Tag Manager Transformation object through API v2.
 ### Optional
 
 - `notes` (String) User notes on how to apply this transformation in the container.
-- `parameter_json` (String) The transformation's parameters.
+- `parameter_json` (String, Sensitive) The transformation's parameters.
 - `parent_folder_id` (String) Parent folder id.
 
 ### Read-Only

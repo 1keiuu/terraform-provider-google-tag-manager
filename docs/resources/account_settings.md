@@ -3,12 +3,12 @@
 page_title: "gtm_account_settings Resource - google-tag-manager"
 subcategory: ""
 description: |-
-  Manages a Google Tag Manager Account object through API v2.
+  Manages settings for an existing Google Tag Manager Account through API v2. The Tag Manager API does not support creating Accounts, and removing this resource does not delete the Account.
 ---
 
 # gtm_account_settings (Resource)
 
-Manages a Google Tag Manager Account object through API v2.
+Manages settings for an existing Google Tag Manager Account through API v2. The Tag Manager API does not support creating Accounts, and removing this resource does not delete the Account.
 
 
 
@@ -21,7 +21,7 @@ Manages a Google Tag Manager Account object through API v2.
 
 ### Optional
 
-- `features_json` (String) Read-only Account feature set
+- `features_json` (String, Sensitive) Read-only Account feature set
 - `name` (String) Account display name.
 - `share_data` (Boolean) Whether the account shares data anonymously with Google and others. This flag enables benchmarking by sharing your data in an anonymous form. Google will remove all identifiable information about your website, combine the data with hundreds of other anonymous sites and report aggregate trends in the benchmarking service.
 

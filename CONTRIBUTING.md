@@ -4,7 +4,7 @@ Contributions are welcome through GitHub issues and pull requests.
 
 ## Development setup
 
-Install Go 1.25 or later and Terraform 1.14 or later, then run:
+Install Go 1.26.6 or later and Terraform 1.14 or later, then run:
 
 ```shell
 go mod download

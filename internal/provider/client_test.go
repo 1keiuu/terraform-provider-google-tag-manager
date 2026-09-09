@@ -103,6 +103,20 @@ func TestClientBuildsDiscoveryRequest(t *testing.T) {
 	}
 }
 
+func TestClientDoesNotTrustDiscoveryRootURL(t *testing.T) {
+	t.Parallel()
+	document := &discovery.Document{RootURL: "http://attacker.invalid/"}
+	method := &discovery.Method{ID: "test.list", Path: "tagmanager/v2/accounts", Parameters: map[string]*discovery.Parameter{}}
+
+	requestURL, err := (&apiClient{}).buildURL(document, method, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.HasPrefix(requestURL, defaultEndpoint) {
+		t.Fatalf("request URL = %q, want canonical endpoint %q", requestURL, defaultEndpoint)
+	}
+}
+
 func TestClientRetriesQuotaErrors(t *testing.T) {
 	t.Parallel()
 	attempts := 0

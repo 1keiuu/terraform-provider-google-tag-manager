@@ -19,7 +19,21 @@ Current API v2 types use the `gtm_` prefix. API v1 types use `gtm_v1_`.
 
 - Terraform 1.14 or later
 - Google Tag Manager API enabled in a Google Cloud project
-- An OAuth user or service account with access to the target GTM account
+- An existing Google Tag Manager account
+- An OAuth user or service account with access to that account
+
+## Initial account setup
+
+A Google Cloud project and a Google Tag Manager account are separate. Enabling
+the Tag Manager API in a Google Cloud project allows applications to call the
+API, but it does not create a Google Tag Manager account.
+
+The Tag Manager API does not provide a method for creating accounts. Before
+using this provider, [create an account and its first container in Google Tag
+Manager](https://support.google.com/tagmanager/answer/14842164). The
+`gtm_account_settings` resource can then manage settings on that existing
+account, and the `gtm_container` resource can create additional containers
+under it.
 
 ## Usage
 
@@ -40,9 +54,23 @@ provider "gtm" {}
 data "gtm_accounts" "available" {}
 ```
 
+After the account exists, create an additional web container by passing its API
+relative path to `parent`:
+
+```hcl
+resource "gtm_container" "website" {
+  parent        = "accounts/123456"
+  name          = "www.example.com"
+  usage_context = ["web"]
+}
+```
+
 Application Default Credentials are used when the provider has no explicit
-authentication settings. Credential JSON, OAuth access tokens, and service
-account impersonation are also supported.
+authentication settings. The `credentials` attribute accepts inline service
+account or authorized user JSON. Credential files and Workload Identity
+Federation should be configured through Application Default Credentials using
+`GOOGLE_APPLICATION_CREDENTIALS`. OAuth access tokens and service account
+impersonation are also supported.
 
 ```hcl
 resource "gtm_workspace" "site" {
@@ -93,6 +121,15 @@ ending in `_json`. This preserves the full GTM `Parameter`, `Condition`, and
 Resource IDs are canonical API-relative paths such as
 `accounts/123456/containers/789012/workspaces/3/tags/7`. They can be passed
 directly to a child resource's `parent` attribute or used for import.
+
+## State security
+
+Structured `_json` attributes are marked sensitive to reduce accidental
+exposure in Terraform output and logs. Terraform sensitivity is display
+metadata and does not encrypt state. GTM parameters and templates can contain
+credentials, tokens, or custom code, so use an encrypted remote backend with
+strict access controls and avoid placing secrets in GTM configuration when a
+secret-management integration is available.
 
 ## Development
 

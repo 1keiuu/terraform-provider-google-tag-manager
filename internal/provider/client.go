@@ -159,7 +159,7 @@ func (c *apiClient) buildURL(document *discovery.Document, method *discovery.Met
 
 	endpoint := c.endpoint
 	if endpoint == "" {
-		endpoint = document.RootURL
+		endpoint = defaultEndpoint
 	}
 	parsed, err := url.Parse(strings.TrimSuffix(endpoint, "/") + "/" + strings.TrimPrefix(pathValue, "/"))
 	if err != nil {
@@ -259,7 +259,7 @@ func retryDelay(attempt int, retryAfter string) time.Duration {
 		}
 	}
 	base := math.Min(30, math.Pow(2, float64(attempt)))
-	jitter := 0.5 + rand.Float64()
+	jitter := 0.5 + rand.Float64() // #nosec G404 -- retry jitter is not security-sensitive randomness.
 	return time.Duration(base * jitter * float64(time.Second))
 }
 
