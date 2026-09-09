@@ -79,9 +79,6 @@ func (r *genericResource) Create(ctx context.Context, request resource.CreateReq
 	if !r.ready(&response.Diagnostics) {
 		return
 	}
-	response.State.Raw = request.Plan.Raw
-	response.State.Schema = request.Plan.Schema
-	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
 	if r.spec.AdoptExisting {
 		r.createAccountSettings(ctx, request, response)
 		return
@@ -114,6 +111,12 @@ func (r *genericResource) Create(ctx context.Context, request resource.CreateReq
 	result, err := r.data.client.Call(ctx, r.document, method, values, body)
 	if err != nil {
 		response.Diagnostics.AddError("Unable to create GTM resource", err.Error())
+		return
+	}
+	response.State.Raw = request.Plan.Raw
+	response.State.Schema = request.Plan.Schema
+	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
+	if response.Diagnostics.HasError() {
 		return
 	}
 	if r.spec.CreateResponseField != "" {
@@ -307,6 +310,12 @@ func (r *genericResource) createAccountSettings(ctx context.Context, request res
 	result, err := r.data.client.Call(ctx, r.document, updateMethod, values, body)
 	if err != nil {
 		response.Diagnostics.AddError("Unable to update GTM account settings", err.Error())
+		return
+	}
+	response.State.Raw = request.Plan.Raw
+	response.State.Schema = request.Plan.Schema
+	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
+	if response.Diagnostics.HasError() {
 		return
 	}
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), resourcePath)...)
