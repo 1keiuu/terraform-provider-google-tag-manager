@@ -12,7 +12,7 @@ import (
 
 var version = "dev"
 
-//go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@v0.24.0 generate --provider-name gtm --rendered-provider-name google-tag-manager
+//go:generate ./scripts/generate-docs.sh
 
 func main() {
 	var debug bool
