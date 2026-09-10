@@ -144,7 +144,8 @@ credentials. Validate release candidates against a dedicated GTM account before
 publishing them.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and testing details.
-日本語の導入手順は[スタートガイド](docs/guides/getting-started-ja.md)にあります。
+See the [Getting Started guide](docs/guides/getting-started.md) for the
+authentication and resource setup steps.
 
 ## License
 
