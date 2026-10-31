@@ -141,7 +141,7 @@ func (r *genericResource) Create(ctx context.Context, request resource.CreateReq
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), resourcePath)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("path"), resourcePath)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("parent"), parent)...)
-	response.Diagnostics.Append(writeResponse(ctx, &response.State, r.definitions, result)...)
+	response.Diagnostics.Append(r.writeResourceResponse(ctx, &response.State, result)...)
 }
 
 func (r *genericResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -173,7 +173,7 @@ func (r *genericResource) Read(ctx context.Context, request resource.ReadRequest
 		response.Diagnostics.AddError("Unable to read GTM resource", err.Error())
 		return
 	}
-	response.Diagnostics.Append(writeResponse(ctx, &response.State, r.definitions, result)...)
+	response.Diagnostics.Append(r.writeResourceResponse(ctx, &response.State, result)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), resourcePath)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("path"), resourcePath)...)
 }
@@ -214,7 +214,7 @@ func (r *genericResource) Update(ctx context.Context, request resource.UpdateReq
 		response.Diagnostics.AddError("Unable to update GTM resource", updateErrorMessage(err))
 		return
 	}
-	response.Diagnostics.Append(writeResponse(ctx, &response.State, r.definitions, result)...)
+	response.Diagnostics.Append(r.writeResourceResponse(ctx, &response.State, result)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), resourcePath)...)
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("path"), resourcePath)...)
 	if !r.spec.AdoptExisting {
