@@ -15,7 +15,7 @@ import (
 func TestCustomTemplateResourceRewrittenData(t *testing.T) {
 	const templatePath = "accounts/1/containers/2/workspaces/3/templates/4"
 	const header = "___TERMS_OF_SERVICE___\n\nTerms here.\n\n"
-	const initial = header + "___INFO___\n\n{\"help\":\"x > y\"}\n\n___SANDBOXED_JS_FOR_WEB_TEMPLATE___\n\nrun();\n"
+	const initial = "\ufeff" + header + "___INFO___\n\n{\"help\":\"x > y\"}\n\n___SANDBOXED_JS_FOR_WEB_TEMPLATE___\n\nrun();\n"
 	updated := strings.Replace(initial, "run();", "updated();", 1)
 	var mutex sync.Mutex
 	var writes int
@@ -39,7 +39,7 @@ func TestCustomTemplateResourceRewrittenData(t *testing.T) {
 			}
 			writes++
 			// Emulate GTM rewriting JSON and stripping the gallery ToS header.
-			template["templateData"] = strings.ReplaceAll(strings.TrimPrefix(data, header), ">", `\u003e`)
+			template["templateData"] = strings.ReplaceAll(strings.TrimPrefix(strings.TrimPrefix(data, "\ufeff"), header), ">", `\u003e`)
 			template["templateData"] = strings.Replace(template["templateData"].(string), "___SANDBOXED_JS_FOR_WEB_TEMPLATE___", "___SANDBOXED_JS_FOR_WEB_TEMPLATE___\n", 1) + "\n\n"
 			_ = json.NewEncoder(response).Encode(template)
 		case http.MethodGet:

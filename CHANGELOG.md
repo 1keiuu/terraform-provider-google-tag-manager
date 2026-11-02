@@ -6,7 +6,7 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
-- Preserve configured custom template data when GTM rewrites JSON escaping, adds blank lines around
+- Preserve configured custom template data when GTM removes a leading UTF-8 BOM, rewrites JSON escaping, adds blank lines around
   JavaScript sections, or removes the terms-of-service header, preventing inconsistent apply results
   and recurring template data differences after refresh.
 

@@ -57,6 +57,9 @@ func templateDataEqual(left, right string) bool {
 }
 
 func templateSections(value string) []templateSection {
+	// UI exports may start with a UTF-8 BOM. Strip only that leading marker
+	// for comparison; preserve the configured value in requests and state.
+	value = strings.TrimPrefix(value, "\ufeff")
 	markers := templateSectionMarker.FindAllStringIndex(value, -1)
 	if len(markers) == 0 {
 		return []templateSection{{data: value}}
