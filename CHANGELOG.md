@@ -13,6 +13,9 @@ All notable changes to this project are documented in this file.
 
 ### Security
 
+- Update golang.org/x/net to v0.60.0 and use Go 1.26.10 / 1.27.3 for builds
+  and CI to address HTTP/2 and certificate verification vulnerabilities.
+
 - Restricted authenticated API requests to the canonical Google Tag Manager
   endpoint.
 - Marked structured JSON attributes as sensitive and hardened the signed
