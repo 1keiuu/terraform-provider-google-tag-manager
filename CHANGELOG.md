@@ -19,6 +19,9 @@ All notable changes to this project are documented in this file.
 
 ### Security
 
+- Use Go 1.26.11 / 1.27.4 to address GO-2026-6859, update golang.org/x/net
+  to v0.62.0 for GO-2026-6860 and GO-2026-6866, and update golang.org/x/crypto
+  to v0.59.0 to exclude the unmaintained OpenPGP packages covered by GO-2026-5932.
 - Update golang.org/x/net to v0.60.0 and use Go 1.26.10 / 1.27.3 for builds
   and CI to address HTTP/2 and certificate verification vulnerabilities.
 
