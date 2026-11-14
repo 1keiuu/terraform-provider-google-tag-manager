@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
+	"github.com/hashicorp/terraform-plugin-testing/terraform"
 )
 
 func TestWorkspaceResourceLifecycle(t *testing.T) {
@@ -145,6 +146,92 @@ resource "gtm_workspace" "test" {
 				Config: config,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("gtm_workspace.test", "id", "accounts/1/containers/2/workspaces/3"),
+				),
+			},
+		},
+	})
+}
+
+func TestUpdateFailureKeepsPriorState(t *testing.T) {
+	var mutex sync.Mutex
+	var updateCalls atomic.Int32
+	var retriedFingerprint string
+	workspace := map[string]any{
+		"accountId":   "1",
+		"containerId": "2",
+		"workspaceId": "3",
+		"path":        "accounts/1/containers/2/workspaces/3",
+		"name":        "initial",
+		"fingerprint": "one",
+	}
+	server := httptest.NewServer(http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
+		mutex.Lock()
+		defer mutex.Unlock()
+		response.Header().Set("Content-Type", "application/json")
+		switch request.Method {
+		case http.MethodPost:
+			_ = json.NewEncoder(response).Encode(workspace)
+		case http.MethodPut:
+			if updateCalls.Add(1) == 1 {
+				response.WriteHeader(http.StatusNotFound)
+				_, _ = response.Write([]byte(`{"error":{"code":404,"message":"Not found or permission denied.","status":"NOT_FOUND"}}`))
+				return
+			}
+			retriedFingerprint = request.URL.Query().Get("fingerprint")
+			var body map[string]any
+			if err := json.NewDecoder(request.Body).Decode(&body); err != nil {
+				http.Error(response, err.Error(), http.StatusBadRequest)
+				return
+			}
+			for key, value := range body {
+				workspace[key] = value
+			}
+			workspace["fingerprint"] = "two"
+			_ = json.NewEncoder(response).Encode(workspace)
+		case http.MethodGet:
+			_ = json.NewEncoder(response).Encode(workspace)
+		case http.MethodDelete:
+			response.WriteHeader(http.StatusNoContent)
+		default:
+			http.Error(response, "unexpected method", http.StatusMethodNotAllowed)
+		}
+	}))
+	defer server.Close()
+
+	config := func(name string) string {
+		return testProviderConfig() + fmt.Sprintf(`
+resource "gtm_workspace" "test" {
+  parent = "accounts/1/containers/2"
+  name   = %q
+}
+`, name)
+	}
+	resource.UnitTest(t, resource.TestCase{
+		ProtoV6ProviderFactories: testProviderFactories(server.URL),
+		Steps: []resource.TestStep{
+			{
+				Config: config("initial"),
+			},
+			{
+				Config:      config("updated"),
+				ExpectError: regexp.MustCompile(`Unable to update GTM resource`),
+			},
+			{
+				// The failed update must leave the prior state, so this refresh
+				// still has the resource's path and the retry sends its fingerprint.
+				Config: config("updated"),
+				Check: resource.ComposeAggregateTestCheckFunc(
+					resource.TestCheckResourceAttr("gtm_workspace.test", "id", "accounts/1/containers/2/workspaces/3"),
+					resource.TestCheckResourceAttr("gtm_workspace.test", "name", "updated"),
+					resource.TestCheckResourceAttr("gtm_workspace.test", "fingerprint", "two"),
+					func(*terraform.State) error {
+						mutex.Lock()
+						defer mutex.Unlock()
+						if retriedFingerprint != "one" {
+							return fmt.Errorf("retried update sent fingerprint %q, want %q", retriedFingerprint, "one")
+						}
+						return nil
+					},
 				),
 			},
 		},
