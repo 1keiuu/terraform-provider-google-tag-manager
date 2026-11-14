@@ -6,6 +6,8 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Keep the prior state when an update fails, instead of saving the planned values with `id`, `path` and the other
+  computed attributes null, which made every later refresh fail with `path "" does not provide path`.
 - Preserve configured custom template data when GTM removes a leading UTF-8 BOM, rewrites JSON escaping, adds blank lines around
   JavaScript sections, or removes the terms-of-service header, preventing inconsistent apply results
   and recurring template data differences after refresh.
