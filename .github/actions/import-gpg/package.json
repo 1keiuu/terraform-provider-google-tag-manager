@@ -1,0 +1,30 @@
+{
+  "name": "gtm-vendored-import-gpg",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Reproducible build of crazy-max/ghaction-import-gpg at 2dc316deee8e90f13e1a351ab510b4d5bc0c82cd",
+  "scripts": {
+    "build": "ncc build src/main.ts --minify --license licenses.txt"
+  },
+  "dependencies": {
+    "@actions/core": "3.0.0",
+    "@actions/exec": "3.0.0",
+    "addressparser": "1.0.1",
+    "openpgp": "6.3.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.45.0",
+    "typescript": "5.9.3",
+    "@types/node": "25.3.3",
+    "@types/addressparser": "1.0.3"
+  },
+  "overrides": {
+    "undici@<7": "6.29.1",
+    "brace-expansion@<2": "1.1.21",
+    "brace-expansion@>=2 <3": "2.1.7",
+    "brace-expansion@>=3 <6": "5.0.12",
+    "minimatch@>=7 <11.0.1": "11.0.2",
+    "fast-xml-parser@<5.12.0": "5.12.0"
+  },
+  "type": "module"
+}

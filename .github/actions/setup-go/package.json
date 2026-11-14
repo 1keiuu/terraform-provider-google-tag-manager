@@ -1,0 +1,34 @@
+{
+  "name": "gtm-vendored-setup-go",
+  "version": "7.0.0",
+  "private": true,
+  "description": "Reproducible build of actions/setup-go at b7ad1dad31e06c5925ef5d2fc7ad053ef454303e",
+  "scripts": {
+    "build": "ncc build src/setup-go.ts -o dist/setup --minify --license licenses.txt && ncc build src/cache-save.ts -o dist/cache-save --minify --license licenses.txt"
+  },
+  "dependencies": {
+    "@actions/cache": "6.2.0",
+    "@actions/core": "3.0.1",
+    "@actions/exec": "3.0.0",
+    "@actions/glob": "0.7.0",
+    "@actions/http-client": "4.0.1",
+    "@actions/io": "3.0.2",
+    "@actions/tool-cache": "4.0.0",
+    "semver": "7.8.5"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.45.0",
+    "typescript": "6.0.3",
+    "@types/node": "24.13.3",
+    "@types/semver": "7.7.1"
+  },
+  "overrides": {
+    "undici@<7": "6.29.1",
+    "brace-expansion@<2": "1.1.21",
+    "brace-expansion@>=2 <3": "2.1.7",
+    "brace-expansion@>=3 <6": "5.0.12",
+    "minimatch@>=7 <11.0.1": "11.0.2",
+    "fast-xml-parser@<5.12.0": "5.12.0"
+  },
+  "type": "module"
+}

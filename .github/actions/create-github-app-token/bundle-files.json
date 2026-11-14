@@ -1,0 +1,9 @@
+{
+  "LICENSE": "db4894342dfaad8f49c5753a0021829bfa0df9f5a4bdd3f953dc6d58190ae000",
+  "THIRD_PARTY_LICENSES.txt": "b1731503a68f24d5e330d0f40cf7991beaf5193bdbc2f3ff3254d3f43dd8fd46",
+  "action.yml": "cede7b0aa15c4ac3f5198f7fd37d4d73b159dd876534c641265e00f3cd42fdbd",
+  "dist/main.cjs": "67bc0e005ecc9f0afd7aba399dca073fdf329b0af468035f11228d7366e19c14",
+  "dist/main.cjs.LEGAL.txt": "e48131515d21a8c8f4049b4956c1393876770e15b4408a8eab4a61ce59b32c22",
+  "dist/post.cjs": "8bf035e0210d9731f4c614cdba2a75414b58a31d80700ad725160687620386cc",
+  "dist/post.cjs.LEGAL.txt": "da547b3d5515869032c591fbdd71b9461727b8ea3173612874b2de82972948b4"
+}
