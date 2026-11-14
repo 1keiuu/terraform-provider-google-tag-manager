@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 
 	"github.com/1keiuu/terraform-provider-google-tag-manager/internal/discovery"
 )
@@ -211,22 +212,26 @@ func (r *genericResource) Update(ctx context.Context, request resource.UpdateReq
 		response.Diagnostics.AddError("Unable to update GTM resource", updateErrorMessage(err))
 		return
 	}
-	// Only replace the prior state once GTM has accepted the update: Terraform
-	// persists the returned state even when Update fails.
-	response.State.Raw = request.Plan.Raw
-	response.State.Schema = request.Plan.Schema
-	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
+	// Keep the prior state until the entire response has been converted. If
+	// conversion fails after GTM accepts the update, a later refresh can recover
+	// the remote values using the last known state.
+	updatedState := tfsdk.State{Raw: request.Plan.Raw.Copy(), Schema: request.Plan.Schema}
+	response.Diagnostics.Append(initializeComputedFields(ctx, &updatedState, r.definitions)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-	response.Diagnostics.Append(r.writeResourceResponse(ctx, &response.State, result)...)
-	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), resourcePath)...)
-	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("path"), resourcePath)...)
+	response.Diagnostics.Append(r.writeResourceResponse(ctx, &updatedState, result)...)
+	response.Diagnostics.Append(updatedState.SetAttribute(ctx, path.Root("id"), resourcePath)...)
+	response.Diagnostics.Append(updatedState.SetAttribute(ctx, path.Root("path"), resourcePath)...)
 	if !r.spec.AdoptExisting {
 		parent, parentDiagnostics := stringAttribute(ctx, request.Plan, "parent")
 		response.Diagnostics.Append(parentDiagnostics...)
-		response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("parent"), parent)...)
+		response.Diagnostics.Append(updatedState.SetAttribute(ctx, path.Root("parent"), parent)...)
 	}
+	if response.Diagnostics.HasError() {
+		return
+	}
+	response.State = updatedState
 }
 
 func (r *genericResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
