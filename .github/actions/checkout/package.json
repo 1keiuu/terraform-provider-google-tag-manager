@@ -1,0 +1,30 @@
+{
+  "name": "gtm-vendored-checkout",
+  "version": "7.0.1",
+  "private": true,
+  "description": "Reproducible build of actions/checkout at 3d3c42e5aac5ba805825da76410c181273ba90b1",
+  "scripts": {
+    "build": "ncc build src/main.ts -o dist --minify --license licenses.txt"
+  },
+  "dependencies": {
+    "@actions/core": "3.0.1",
+    "@actions/exec": "3.0.0",
+    "@actions/github": "9.1.1",
+    "@actions/io": "3.0.2",
+    "@actions/tool-cache": "4.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.45.0",
+    "typescript": "5.9.3",
+    "@types/node": "24.1.0"
+  },
+  "overrides": {
+    "undici@<7": "6.29.1",
+    "brace-expansion@<2": "1.1.21",
+    "brace-expansion@>=2 <3": "2.1.7",
+    "brace-expansion@>=3 <6": "5.0.12",
+    "minimatch@>=7 <11.0.1": "11.0.2",
+    "fast-xml-parser@<5.12.0": "5.12.0"
+  },
+  "type": "module"
+}

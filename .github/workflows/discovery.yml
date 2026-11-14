@@ -17,7 +17,7 @@ jobs:
     name: Compare discovery documents
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@ece3837390798c3261f920f94a584ea00393ab39
         with:
           persist-credentials: false
       - run: |

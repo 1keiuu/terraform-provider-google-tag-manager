@@ -1,0 +1,29 @@
+{
+  "name": "gtm-vendored-setup-terraform",
+  "version": "4.0.1",
+  "private": true,
+  "description": "Reproducible build of hashicorp/setup-terraform at dfe3c3f87815947d99a8997f908cb6525fc44e9e",
+  "scripts": {
+    "build": "ncc build wrapper/terraform.js --out wrapper/dist --minify --license licenses.txt && ncc build index.js --out dist --minify --license licenses.txt"
+  },
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/exec": "1.1.1",
+    "@actions/github": "8.0.1",
+    "@actions/io": "1.1.3",
+    "@actions/tool-cache": "2.0.2",
+    "@hashicorp/js-releases": "1.7.7",
+    "semver": "7.7.4"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.45.0"
+  },
+  "overrides": {
+    "undici@<7": "6.29.1",
+    "brace-expansion@<2": "1.1.21",
+    "brace-expansion@>=2 <3": "2.1.7",
+    "brace-expansion@>=3 <6": "5.0.12",
+    "minimatch@>=7 <11.0.1": "11.0.2",
+    "fast-xml-parser@<5.12.0": "5.12.0"
+  }
+}

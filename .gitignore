@@ -7,4 +7,6 @@
 .terraform.lock.hcl
 terraform-provider-google-tag-manager
 dist/
+!.github/actions/**/dist/
+!.github/actions/**/dist/**
 coverage.out

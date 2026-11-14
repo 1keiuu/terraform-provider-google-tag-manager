@@ -22,3 +22,21 @@ updates:
       github-actions:
         patterns:
           - "*"
+
+  - package-ecosystem: npm
+    directories:
+      - /.github/actions/checkout
+      - /.github/actions/setup-go
+      - /.github/actions/create-github-app-token
+      - /.github/actions/import-gpg
+      - /.github/actions/codeql
+      - /.github/actions/setup-terraform
+      - /.github/actions/goreleaser
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      vendored-action-dependencies:
+        patterns:
+          - "*"

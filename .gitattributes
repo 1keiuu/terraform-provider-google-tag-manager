@@ -1,0 +1,4 @@
+.github/actions/**/dist/** linguist-generated=true
+.github/actions/codeql/lib/** linguist-generated=true
+.github/actions/**/bundle-files.json linguist-generated=true
+.github/actions/**/THIRD_PARTY_LICENSES.txt linguist-generated=true
