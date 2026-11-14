@@ -3,8 +3,6 @@
   "THIRD_PARTY_LICENSES.txt": "72ecc452d33cad42192630cb3b21a006077a5f084eef4a77b548f3453023a5c6",
   "action.yml": "ce0b1dc8d13f614104fc5bef991e199cccde91dde681cb952b24d647ad3f7d2d",
   "dist/index.js": "c27fb8a820c67af5351d39bbf63c1d0f450f07cc491cf83e56a9e60a213afb91",
-  "dist/index.js.map": "3cf4c5ebfe5db052e79d99f053ea1c7e82a843d441136cf616a83a4335ebb52e",
   "dist/licenses.txt": "c6bdd0ba1824b915dd0616e668cb75df5e00c9979fbbf2c4f2ae758d0c02fb40",
-  "dist/package.json": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a",
-  "dist/sourcemap-register.cjs": "c2a14a81784d12c15b7baeed88c1faae3457e84890d1e5244cbfc0f4455b5e06"
+  "dist/package.json": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
 }

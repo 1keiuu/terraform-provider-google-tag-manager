@@ -28,7 +28,7 @@ def licenses(source):
     lock = json.loads((source / 'package-lock.json').read_text())
     sections = []
     for relative, package in sorted(lock['packages'].items()):
-        if not relative or package.get('dev') or package.get('optional'):
+        if not relative or package.get('dev'):
             continue
         directory = source / relative
         if not directory.is_dir():
@@ -57,6 +57,13 @@ def build(name, specification, check):
         with tarfile.open(archive) as tar:
             tar.extractall(extracted, filter='data')
         source, = extracted.iterdir()
+        static_files = {relative: (source / relative).read_bytes()
+                        for relative in specification.get('static_files', [])}
+        # Never carry upstream bundles or source maps into patched artifacts.
+        for relative in specification['generated_directories']:
+            directory = source / relative
+            if directory.exists():
+                shutil.rmtree(directory)
         for filename in ('package.json', 'package-lock.json'):
             shutil.copyfile(destination / filename, source / filename)
         # Ignore all dependency lifecycle hooks. Only the reviewed build command runs.
@@ -77,6 +84,10 @@ fs.writeFileSync('tsconfig.json', JSON.stringify(result.config, null, 2) + '\\n'
             run(['node', '--input-type=commonjs', '-e', script,
                  json.dumps(specification['typescript_entrypoints'])], source)
         run(['npm', 'run', 'build'], source)
+        for relative, content in static_files.items():
+            target = source / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
         output = work / 'output'
         output.mkdir()
         for relative in specification['outputs']:

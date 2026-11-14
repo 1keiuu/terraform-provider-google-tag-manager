@@ -11,5 +11,6 @@
   "dist/setup/835.index.js": "372828167da4f44b7ed0ac0d1fe941ce67bbca1ddf68eed2883421326f58df9c",
   "dist/setup/index.js": "5fcc38d366c0c2a6343d93c8e1a695c23e667f8ae4aef7ae9b6622f51f509f97",
   "dist/setup/licenses.txt": "7124ff8441390a9a3621f81ca2b030dad80de0b7d3a2a702da58ac83a0243d12",
-  "dist/setup/package.json": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+  "dist/setup/package.json": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a",
+  "matchers.json": "03d59f953e08fdbe12c43f98bce08e9daa6d0ff5b5920111c9b23dd4e1991d06"
 }

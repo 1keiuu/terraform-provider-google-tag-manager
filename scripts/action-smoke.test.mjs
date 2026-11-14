@@ -55,6 +55,14 @@ function savedState(content) {
   return result;
 }
 
+test('problem matcher assets used by checkout and setup-go are present', async () => {
+  for (const relative of ['checkout/dist/problem-matcher.json', 'setup-go/matchers.json']) {
+    const matcher = JSON.parse(await readFile(path.join(actions, relative), 'utf8'));
+    assert.ok(matcher.problemMatcher.length > 0, relative);
+    for (const entry of matcher.problemMatcher) assert.equal(typeof entry.owner, 'string');
+  }
+});
+
 test('bundled App token Action restricts scope and revokes its token', { timeout: 60_000 }, async () => {
   const directory = await mkdtemp('/tmp/gtm-token-');
   const { privateKey, publicKey } = generateKeyPairSync('rsa', {

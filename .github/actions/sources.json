@@ -9,6 +9,12 @@
     "archive_sha256": "b59292069298c7be5ffd9c636431a229faff70ece00e0c24fd31baeb7b309fa3",
     "typescript_entrypoints": [
       "src/main.ts"
+    ],
+    "generated_directories": [
+      "dist"
+    ],
+    "static_files": [
+      "dist/problem-matcher.json"
     ]
   },
   "setup-go": {
@@ -16,12 +22,16 @@
     "commit": "b7ad1dad31e06c5925ef5d2fc7ad053ef454303e",
     "outputs": [
       "action.yml",
-      "dist"
+      "dist",
+      "matchers.json"
     ],
     "archive_sha256": "c0f9ce2412e45f9ed1115f9950a01403b58b7f2b830cbcf52b186bb7a2d5b120",
     "typescript_entrypoints": [
       "src/setup-go.ts",
       "src/cache-save.ts"
+    ],
+    "generated_directories": [
+      "dist"
     ]
   },
   "create-github-app-token": {
@@ -31,7 +41,10 @@
       "action.yml",
       "dist"
     ],
-    "archive_sha256": "d4b94aabc631d3b4cf6f03a9ea6ac8ec685357b8399e2fd6a5f01fde0fcc7958"
+    "archive_sha256": "d4b94aabc631d3b4cf6f03a9ea6ac8ec685357b8399e2fd6a5f01fde0fcc7958",
+    "generated_directories": [
+      "dist"
+    ]
   },
   "import-gpg": {
     "repository": "crazy-max/ghaction-import-gpg",
@@ -43,6 +56,9 @@
     "archive_sha256": "782cbc970190fc4c91866c592260171d0a36a5ac0f12d029ec8000a57822b13b",
     "typescript_entrypoints": [
       "src/main.ts"
+    ],
+    "generated_directories": [
+      "dist"
     ]
   },
   "codeql": {
@@ -60,7 +76,10 @@
       "setup-codeql",
       "upload-sarif"
     ],
-    "archive_sha256": "5f9520457592430c3a3635757fd04eb7d040a5020608426c3e3f5edd206997d3"
+    "archive_sha256": "5f9520457592430c3a3635757fd04eb7d040a5020608426c3e3f5edd206997d3",
+    "generated_directories": [
+      "lib"
+    ]
   },
   "setup-terraform": {
     "repository": "hashicorp/setup-terraform",
@@ -70,7 +89,11 @@
       "dist",
       "wrapper/dist"
     ],
-    "archive_sha256": "91272524967d0481f7c200b17b78014459a8b23e0799f85b3912f7a6309d9132"
+    "archive_sha256": "91272524967d0481f7c200b17b78014459a8b23e0799f85b3912f7a6309d9132",
+    "generated_directories": [
+      "dist",
+      "wrapper/dist"
+    ]
   },
   "goreleaser": {
     "repository": "goreleaser/goreleaser-action",
@@ -82,6 +105,9 @@
     "archive_sha256": "3c1b3b7f2db6f885e666dea8712b27568964acf37377f9c02eead57cafa37d9c",
     "typescript_entrypoints": [
       "src/main.ts"
+    ],
+    "generated_directories": [
+      "dist"
     ]
   }
 }
