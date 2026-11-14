@@ -1,0 +1,5 @@
+name: Use the runner Node.js runtime
+description: Use the same Node.js 24 runtime for dependency audits and Action builds.
+runs:
+  using: node24
+  main: index.js

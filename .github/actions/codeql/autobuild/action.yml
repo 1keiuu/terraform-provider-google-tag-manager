@@ -1,0 +1,19 @@
+name: "CodeQL: Autobuild"
+description: "Attempt to automatically build the code. Only used for analyzing languages that require a build. Use the `build-mode: autobuild` input in the `init` action instead."
+author: "GitHub"
+inputs:
+  token:
+    description: "GitHub token to use for authenticating with this instance of GitHub. The token needs the `security-events: write` permission."
+    required: false
+    default: ${{ github.token }}
+  matrix:
+    default: ${{ toJson(matrix) }}
+  working-directory:
+    description: >-
+      Run the autobuilder using this path (relative to $GITHUB_WORKSPACE) as
+      working directory. If this input is not set, the autobuilder runs with
+      $GITHUB_WORKSPACE as its working directory.
+    required: false
+runs:
+  using: node24
+  main: "../lib/autobuild-entry.js"
