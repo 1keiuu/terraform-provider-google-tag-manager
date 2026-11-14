@@ -182,9 +182,6 @@ func (r *genericResource) Update(ctx context.Context, request resource.UpdateReq
 	if !r.ready(&response.Diagnostics) {
 		return
 	}
-	response.State.Raw = request.Plan.Raw
-	response.State.Schema = request.Plan.Schema
-	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
 	method, err := r.document.Method(r.spec.UpdateMethod)
 	if err != nil {
 		response.Diagnostics.AddError("Unable to resolve GTM update method", err.Error())
@@ -212,6 +209,14 @@ func (r *genericResource) Update(ctx context.Context, request resource.UpdateReq
 	result, err := r.data.client.Call(ctx, r.document, method, values, body)
 	if err != nil {
 		response.Diagnostics.AddError("Unable to update GTM resource", updateErrorMessage(err))
+		return
+	}
+	// Only replace the prior state once GTM has accepted the update: Terraform
+	// persists the returned state even when Update fails.
+	response.State.Raw = request.Plan.Raw
+	response.State.Schema = request.Plan.Schema
+	response.Diagnostics.Append(initializeComputedFields(ctx, &response.State, r.definitions)...)
+	if response.Diagnostics.HasError() {
 		return
 	}
 	response.Diagnostics.Append(r.writeResourceResponse(ctx, &response.State, result)...)
