@@ -6,6 +6,7 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Preserve the prior state when a successful update returns values that cannot be stored in Terraform state.
 - Keep the prior state when an update fails, instead of saving the planned values with `id`, `path` and the other
   computed attributes null, which made every later refresh fail with `path "" does not provide path`.
 - Preserve configured custom template data when GTM removes a leading UTF-8 BOM, rewrites JSON escaping, adds blank lines around
