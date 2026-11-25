@@ -19,7 +19,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@ece3837390798c3261f920f94a584ea00393ab39
+      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@03402088f48d96566a2c227db197dd2c364b0f13
         with:
           fetch-depth: 0
           persist-credentials: false

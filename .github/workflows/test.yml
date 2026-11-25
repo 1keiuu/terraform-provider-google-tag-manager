@@ -20,7 +20,7 @@ jobs:
         go-version: ["1.26.11", "1.27.4"]
     runs-on: ubuntu-24.04
     steps:
-      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@ece3837390798c3261f920f94a584ea00393ab39
+      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@03402088f48d96566a2c227db197dd2c364b0f13
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup-go
@@ -46,7 +46,7 @@ jobs:
     name: Generated documentation
     runs-on: ubuntu-24.04
     steps:
-      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@ece3837390798c3261f920f94a584ea00393ab39
+      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@03402088f48d96566a2c227db197dd2c364b0f13
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup-go
@@ -64,7 +64,7 @@ jobs:
     name: GoReleaser configuration
     runs-on: ubuntu-24.04
     steps:
-      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@ece3837390798c3261f920f94a584ea00393ab39
+      - uses: 1keiuu/terraform-provider-google-tag-manager/.github/actions/checkout@03402088f48d96566a2c227db197dd2c364b0f13
         with:
           persist-credentials: false
       - uses: ./.github/actions/goreleaser
